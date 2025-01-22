@@ -43,18 +43,21 @@
             // 
             // myBookingInfoBtn
             // 
-            myBookingInfoBtn.Location = new Point(375, 16);
+            myBookingInfoBtn.Location = new Point(429, 21);
+            myBookingInfoBtn.Margin = new Padding(3, 4, 3, 4);
             myBookingInfoBtn.Name = "myBookingInfoBtn";
-            myBookingInfoBtn.Size = new Size(136, 41);
+            myBookingInfoBtn.Size = new Size(155, 55);
             myBookingInfoBtn.TabIndex = 0;
             myBookingInfoBtn.Text = "Мои билеты";
             myBookingInfoBtn.UseVisualStyleBackColor = true;
+            myBookingInfoBtn.Click += myBookingInfoBtn_Click;
             // 
             // flightTimetableBtn
             // 
-            flightTimetableBtn.Location = new Point(233, 16);
+            flightTimetableBtn.Location = new Point(266, 21);
+            flightTimetableBtn.Margin = new Padding(3, 4, 3, 4);
             flightTimetableBtn.Name = "flightTimetableBtn";
-            flightTimetableBtn.Size = new Size(136, 41);
+            flightTimetableBtn.Size = new Size(155, 55);
             flightTimetableBtn.TabIndex = 3;
             flightTimetableBtn.Text = "Расписание рейсов";
             flightTimetableBtn.UseVisualStyleBackColor = true;
@@ -62,88 +65,97 @@
             // 
             // logoutBtn
             // 
-            logoutBtn.Location = new Point(517, 16);
+            logoutBtn.Location = new Point(591, 21);
+            logoutBtn.Margin = new Padding(3, 4, 3, 4);
             logoutBtn.Name = "logoutBtn";
-            logoutBtn.Size = new Size(136, 41);
+            logoutBtn.Size = new Size(155, 55);
             logoutBtn.TabIndex = 4;
             logoutBtn.Text = "Выход";
             logoutBtn.UseVisualStyleBackColor = true;
             // 
             // profileBtn
             // 
-            profileBtn.Location = new Point(91, 16);
+            profileBtn.Location = new Point(104, 21);
+            profileBtn.Margin = new Padding(3, 4, 3, 4);
             profileBtn.Name = "profileBtn";
-            profileBtn.Size = new Size(136, 41);
+            profileBtn.Size = new Size(155, 55);
             profileBtn.TabIndex = 5;
             profileBtn.Text = "Профиль";
             profileBtn.UseVisualStyleBackColor = true;
             // 
             // showUsersBtn
             // 
-            showUsersBtn.Location = new Point(517, 57);
+            showUsersBtn.Location = new Point(591, 76);
+            showUsersBtn.Margin = new Padding(3, 4, 3, 4);
             showUsersBtn.Name = "showUsersBtn";
-            showUsersBtn.Size = new Size(136, 41);
+            showUsersBtn.Size = new Size(155, 55);
             showUsersBtn.TabIndex = 6;
             showUsersBtn.Text = "Просмотреть пользователей";
             showUsersBtn.UseVisualStyleBackColor = true;
             // 
             // swowMyAirlineBtn
             // 
-            swowMyAirlineBtn.Location = new Point(517, 104);
+            swowMyAirlineBtn.Location = new Point(591, 139);
+            swowMyAirlineBtn.Margin = new Padding(3, 4, 3, 4);
             swowMyAirlineBtn.Name = "swowMyAirlineBtn";
-            swowMyAirlineBtn.Size = new Size(136, 41);
+            swowMyAirlineBtn.Size = new Size(155, 55);
             swowMyAirlineBtn.TabIndex = 7;
             swowMyAirlineBtn.Text = "Моя авиакомпания";
             swowMyAirlineBtn.UseVisualStyleBackColor = true;
             // 
             // airlinesBtn
             // 
-            airlinesBtn.Location = new Point(91, 57);
+            airlinesBtn.Location = new Point(104, 76);
+            airlinesBtn.Margin = new Padding(3, 4, 3, 4);
             airlinesBtn.Name = "airlinesBtn";
-            airlinesBtn.Size = new Size(136, 41);
+            airlinesBtn.Size = new Size(155, 55);
             airlinesBtn.TabIndex = 8;
             airlinesBtn.Text = "Авиакомпании";
             airlinesBtn.UseVisualStyleBackColor = true;
             // 
             // showCrewBtn
             // 
-            showCrewBtn.Location = new Point(233, 57);
+            showCrewBtn.Location = new Point(266, 76);
+            showCrewBtn.Margin = new Padding(3, 4, 3, 4);
             showCrewBtn.Name = "showCrewBtn";
-            showCrewBtn.Size = new Size(136, 41);
+            showCrewBtn.Size = new Size(155, 55);
             showCrewBtn.TabIndex = 9;
             showCrewBtn.Text = "Экипажи";
             showCrewBtn.UseVisualStyleBackColor = true;
             // 
             // showStaffBtn
             // 
-            showStaffBtn.Location = new Point(375, 57);
+            showStaffBtn.Location = new Point(429, 76);
+            showStaffBtn.Margin = new Padding(3, 4, 3, 4);
             showStaffBtn.Name = "showStaffBtn";
-            showStaffBtn.Size = new Size(136, 41);
+            showStaffBtn.Size = new Size(155, 55);
             showStaffBtn.TabIndex = 10;
             showStaffBtn.Text = "Персонал";
             showStaffBtn.UseVisualStyleBackColor = true;
             // 
             // createFlightBtn
             // 
-            createFlightBtn.Location = new Point(375, 104);
+            createFlightBtn.Location = new Point(429, 139);
+            createFlightBtn.Margin = new Padding(3, 4, 3, 4);
             createFlightBtn.Name = "createFlightBtn";
-            createFlightBtn.Size = new Size(136, 41);
+            createFlightBtn.Size = new Size(155, 55);
             createFlightBtn.TabIndex = 11;
             createFlightBtn.Text = "Создать рейс";
             createFlightBtn.UseVisualStyleBackColor = true;
             // 
             // showMyCrewBtn
             // 
-            showMyCrewBtn.Location = new Point(233, 104);
+            showMyCrewBtn.Location = new Point(266, 139);
+            showMyCrewBtn.Margin = new Padding(3, 4, 3, 4);
             showMyCrewBtn.Name = "showMyCrewBtn";
-            showMyCrewBtn.Size = new Size(136, 41);
+            showMyCrewBtn.Size = new Size(155, 55);
             showMyCrewBtn.TabIndex = 12;
             showMyCrewBtn.Text = "Мой экипаж";
             showMyCrewBtn.UseVisualStyleBackColor = true;
             // 
             // MainPanel
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
             Controls.Add(showMyCrewBtn);
@@ -157,8 +169,9 @@
             Controls.Add(logoutBtn);
             Controls.Add(flightTimetableBtn);
             Controls.Add(myBookingInfoBtn);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MainPanel";
-            Size = new Size(670, 401);
+            Size = new Size(766, 490);
             SizeChanged += MainUserPanel_SizeChanged;
             ResumeLayout(false);
         }

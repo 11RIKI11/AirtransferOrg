@@ -13,6 +13,7 @@ namespace КП.UI.Panels
         private int currentPage = 0;
         private bool sortAsc = true;
         private bool myFlights = false;
+        private LocalDate selectedDepartureDate = LocalDate.FromDateTime(DateTime.Now);
 
         public FlightListPanel()
         {
@@ -22,6 +23,11 @@ namespace КП.UI.Panels
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowFlights(null, EventArgs.Empty); };
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowFlights(null, EventArgs.Empty); };
             sortFieldSelect.SelectedIndexChanged += (s, e) => { ShowFlights(null, EventArgs.Empty); };
+            departureDateSelectCalendar.DateChanged += (s, e) => {
+                selectedDepartureDate = LocalDate.FromDateTime(departureDateSelectCalendar.SelectionStart);
+                ShowFlights(null, EventArgs.Empty);
+            };
+            resetFiltersBtn.Click += ClearFilter_Click;
 
 
             showAllFlights.Hide();
@@ -86,6 +92,17 @@ namespace КП.UI.Panels
             flightListDataGrid.CellContentClick += FlightListDataGrid_CellContentClick;
         }
 
+        private void ClearFilter_Click(object sender, EventArgs e)
+        {
+            sortAsc = true;
+            myFlights = false;
+            currentPage = 0;
+            searchTextBox.Text = string.Empty;
+            sortFieldSelect.SelectedIndex = 0;
+            selectedDepartureDate = LocalDate.FromDateTime(DateTime.Now);
+            departureDateSelectCalendar.SelectionStart = DateTime.Now;
+        }
+
         private void FlightListDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == flightListDataGrid.Columns["Details"].Index && e.RowIndex >= 0)
@@ -99,7 +116,6 @@ namespace КП.UI.Panels
         {
             var context = DbContextFactory.CreateContext();
 
-            var nowDate = LocalDateTime.FromDateTime(DateTime.Now);
             var query = context.Flights
                 .Include(f => f.Airline)
                 .Include(f => f.DepartureAirport)
@@ -107,7 +123,7 @@ namespace КП.UI.Panels
                 .Include(f => f.Aircraft)
                 .ThenInclude(a => a.Model)
                 .Include(f => f.Status)
-                .Where(f => f.DepartureTime >= nowDate);
+                .Where(f => f.DepartureTime.Date == selectedDepartureDate);
 
             if (myFlights)
             {
@@ -123,13 +139,6 @@ namespace КП.UI.Panels
                 || f.ArrivalAirport.Name.ToLower().StartsWith(search)
                 || f.Aircraft.RegistationNumber.ToString().StartsWith(search)
                 || f.Airline.Name.ToLower().StartsWith(search));
-            }
-
-            DateTime? departureDate = DateTime.Now;
-            if (departureDate.HasValue && departureDate != DateTime.Now)
-            {
-                var departureLocalDate = LocalDateTime.FromDateTime(DateTime.Now);
-                query = query.Where(f => f.DepartureTime >= departureLocalDate);
             }
 
             int sortIndex = sortFieldSelect.SelectedIndex;
@@ -175,13 +184,17 @@ namespace КП.UI.Panels
             showMyFlightsBtn.Location = new Point(flightListDataGrid.Location.X + flightListDataGrid.Width + 40, flightListDataGrid.Location.Y + showMyFlightsBtn.Height);
             searchLabel.Location = new Point(flightListDataGrid.Location.X + flightListDataGrid.Width + 40, flightListDataGrid.Location.Y + showMyFlightsBtn.Height - searchTextBox.Height);
             searchTextBox.Location = new Point(searchLabel.Location.X, searchLabel.Location.Y + searchTextBox.Height);
-            showMyFlightsBtn.Location = new Point(searchTextBox.Location.X, searchTextBox.Location.Y + showMyFlightsBtn.Height);
+            resetFiltersBtn.Location = new Point(searchTextBox.Location.X, searchTextBox.Location.Y + resetFiltersBtn.Height);
+            showMyFlightsBtn.Location = new Point(resetFiltersBtn.Location.X, resetFiltersBtn.Location.Y + showMyFlightsBtn.Height);
             showAllFlights.Location = new Point(showMyFlightsBtn.Location.X, showMyFlightsBtn.Location.Y + showMyFlightsBtn.Height + 10);
             sortLabel.Location = new Point(showAllFlights.Location.X, showAllFlights.Location.Y + showAllFlights.Height + 10);
             sortFieldLabel.Location = new Point(sortLabel.Location.X, sortLabel.Location.Y + sortLabel.Height);
             sortFieldSelect.Location = new Point(sortFieldLabel.Location.X, sortFieldLabel.Location.Y + sortFieldLabel.Height);
             sortAscBtn.Location = new Point(sortFieldSelect.Location.X, sortFieldSelect.Location.Y + sortFieldSelect.Height + 10);
             sortDescBtn.Location = new Point(sortAscBtn.Location.X, sortAscBtn.Location.Y + sortAscBtn.Height + 10);
+            sortFieldSelect.SelectedIndex = 0;
+            departureDateselectLabel.Location = new Point(searchLabel.Location.X + searchTextBox.Width + 10, searchLabel.Location.Y);
+            departureDateSelectCalendar.Location = new Point(searchTextBox.Location.X + searchTextBox.Width + 10, searchTextBox.Location.Y);
         }
     }
 }
