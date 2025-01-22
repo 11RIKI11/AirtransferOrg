@@ -1,6 +1,6 @@
 ﻿namespace КП.UI.Panels
 {
-    partial class RegisterPanel : UserControl
+    partial class RegisterPanel
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

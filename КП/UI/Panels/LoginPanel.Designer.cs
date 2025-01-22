@@ -1,6 +1,6 @@
 ﻿namespace КП.UI.Panels
 {
-    partial class LoginPanel : UserControl
+    partial class LoginPanel
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

@@ -2,7 +2,9 @@
 using КП.Core.Entities;
 using КП.Infrastructure;
 
-public class RegisterPanel : UserControl
+namespace КП.UI.Panels;
+
+public partial class RegisterPanel : UserControl
 {
     private TextBox firstNameTextBox;
     private TextBox lastNameTextBox;

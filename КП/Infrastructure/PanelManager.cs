@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using КП.Core;
 
 namespace КП.Infrastructure
 {
@@ -11,9 +9,6 @@ namespace КП.Infrastructure
         private static UserControl _previousPanel;
 
         private static Control _parentControl;
-
-        public delegate void PanelChangedEventHandler(object sender, EventArgs e);
-        public static event PanelChangedEventHandler PanelChanged;
 
         public static UserControl CurrentPanel => _currentPanel;
 
@@ -30,12 +25,17 @@ namespace КП.Infrastructure
                 }
                 panels[panel.GetType()] = panel;
             }
-        } 
+        }
+
+        public static void SwitchTo<T>() where T : UserControl, new()
+        {
+            SwitchTo<T>(null);
+        }
 
         /// <summary>
         /// Переключает на указанную панель.
         /// </summary>
-        public static void SwitchTo<T>() where T : UserControl, new()
+        public static void SwitchTo<T>(dynamic data) where T : UserControl, new()
         {
             if (!panels.TryGetValue(typeof(T), out UserControl newPanel))
             {
@@ -51,8 +51,13 @@ namespace КП.Infrastructure
             }
 
             _currentPanel = newPanel;
+
+            if (_currentPanel is IPanelWithData panel)
+            {
+                panel.SetData(data);
+            }
+
             InsertPanelDeepest(_currentPanel);
-            OnPanelChanged();
         }
 
         /// <summary>
@@ -73,8 +78,6 @@ namespace КП.Infrastructure
             InsertPanelDeepest(_currentPanel);
 
             _previousPanel = null;
-
-            OnPanelChanged();
         }
 
         /// <summary>
@@ -94,11 +97,6 @@ namespace КП.Infrastructure
             }
             parent.Controls.Add(panel);
             panel.Dock = DockStyle.Fill;
-        }
-
-        public static void OnPanelChanged()
-        {
-            PanelChanged?.Invoke(null, EventArgs.Empty);
         }
     }
 }

@@ -6,7 +6,9 @@ using System.Windows.Forms;
 using КП.Infrastructure;
 using КП.UI.Panels;
 
-public class LoginPanel : UserControl
+namespace КП.UI.Panels;
+
+public partial class LoginPanel : UserControl
 {
     private TextBox emailTextBox;
     private TextBox passwordTextBox;
