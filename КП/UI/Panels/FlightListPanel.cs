@@ -195,5 +195,10 @@ namespace КП.UI.Panels
             departureDateselectLabel.Location = new Point(searchLabel.Location.X + searchTextBox.Width + 10, searchLabel.Location.Y);
             departureDateSelectCalendar.Location = new Point(searchTextBox.Location.X + searchTextBox.Width + 10, searchTextBox.Location.Y);
         }
+
+        private void myBookingInfoBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<MyTickets>();
+        }
     }
 }

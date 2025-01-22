@@ -49,6 +49,7 @@
             myBookingInfoBtn.TabIndex = 0;
             myBookingInfoBtn.Text = "Мои билеты";
             myBookingInfoBtn.UseVisualStyleBackColor = true;
+            myBookingInfoBtn.Click += myBookingInfoBtn_Click;
             // 
             // flightTimetableBtn
             // 

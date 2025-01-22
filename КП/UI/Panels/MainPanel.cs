@@ -36,5 +36,10 @@ namespace КП.UI.Panels
         {
             PanelManager.SwitchTo<FlightListPanel>();
         }
+
+        private void myBookingInfoBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<MyTickets>();
+        }
     }
 }
