@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using КП.Core.Entities;
 using КП.Infrastructure;
 
 public class RegisterPanel : UserControl
@@ -144,7 +145,20 @@ public class RegisterPanel : UserControl
             return;
         }
 
-        //TODO запрос в бд
+        var user = new User()
+        {
+            Email = emailTextBox.Text,
+            FirstName = firstNameTextBox.Text,
+            LastName = lastNameTextBox.Text,
+            Password = passwordTextBox.Text,
+            PhoneNumber = phoneTextBox.Text,
+            RoleId = (short)(roleComboBox.SelectedIndex + 1),
+        };
+
+        var context = DbContextFactory.CreateContext();
+        context.Users.Add(user);
+        context.SaveChanges();
+
         MessageDisplay.ShowMessage("Вы успешно зарегистрированы", КП.Core.Enums.MessageType.Success);
         PanelManager.SwitchTo<LoginPanel>();
     }
@@ -162,9 +176,9 @@ public class RegisterPanel : UserControl
             return "Фамилия должна быть на русском языке с заглавной буквы, без пробелов.";
         }
 
-        if (string.IsNullOrWhiteSpace(phoneTextBox.Text) || !Regex.IsMatch(phoneTextBox.Text, @"^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$"))
+        if (string.IsNullOrWhiteSpace(phoneTextBox.Text) || !Regex.IsMatch(phoneTextBox.Text, @"^\+\d{11}$"))
         {
-            return "Неверный формат телефона. Пример: +7 (123) 456-78-90";
+            return "Неверный формат телефона. Пример: +7124567890";
         }
 
         if (string.IsNullOrWhiteSpace(emailTextBox.Text) || !Regex.IsMatch(emailTextBox.Text, @"^[\w-]+(\.[\w-]+)*@[\w-]+\.[a-z]{2,6}$"))

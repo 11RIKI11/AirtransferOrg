@@ -5,13 +5,13 @@ using КП.Core.Entities;
 
 namespace КП.Data;
 
-public partial class AirtransferOrganizationContext : DbContext
+public partial class ApplicationDbContext : DbContext
 {
-    public AirtransferOrganizationContext()
+    public ApplicationDbContext()
     {
     }
 
-    public AirtransferOrganizationContext(DbContextOptions<AirtransferOrganizationContext> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
     }
@@ -69,10 +69,6 @@ public partial class AirtransferOrganizationContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=airtransfer_organization;Username=postgres;Password=BaBaaH228!!!", x => x.UseNodaTime());
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

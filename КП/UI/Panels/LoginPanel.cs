@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -17,14 +18,14 @@ public class LoginPanel : UserControl
 
     public LoginPanel()
     {
-        this.Dock = DockStyle.Fill;//Если Fill, то PanelManager сам задаст размер
+        this.Dock = DockStyle.Fill;
         this.BackColor = Color.LightSkyBlue;
-        SizeChanged += LoginPanel_SizeChanged;//сработает после изменения размера(когда растянится)
+        SizeChanged += LoginPanel_SizeChanged;
     }
 
     public void LoginPanel_SizeChanged(object sender, EventArgs e)
     {
-        SizeChanged += LoginPanel_SizeChanged;//Отпишись
+        SizeChanged -= LoginPanel_SizeChanged;//Отпишись
 
         containerPanel = new Panel()
         {
@@ -129,21 +130,25 @@ public class LoginPanel : UserControl
             return;
         }
 
-        var user = new { email = "user1@example.com", password = "123" };//TODO Запрос в бд
+        var context = DbContextFactory.CreateContext();
+        var user = context.Users
+            .Include(u => u.Role)
+            .FirstOrDefault(user => user.Email == email);
+        
         if (user is null)
         {
             MessageDisplay.ShowMessage("Пользователь с таким email не найден", КП.Core.Enums.MessageType.Error);
             return;
         }
 
-        if (user.password != password)
+        if (user.Password != password)
         {
             MessageDisplay.ShowMessage("Неверный пароль", КП.Core.Enums.MessageType.Error);
             return;
         }
-        
+        UserSession.Login(user.Id, user.Role.Name);
         MessageDisplay.ShowMessage("Вы успешно вошли в аккаунт", КП.Core.Enums.MessageType.Success);
-        PanelManager.SwitchTo<Panel1>();
+        //PanelManager.SwitchTo<Panel1>();
     }
     private string ValidateLoginFields(string email, string password)
     {

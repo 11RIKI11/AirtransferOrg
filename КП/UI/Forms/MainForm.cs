@@ -23,7 +23,6 @@ namespace КП
             PanelManager.RegisterPanel(new LoginPanel());
             PanelManager.RegisterPanel(new RegisterPanel());
 
-            PanelManager.RegisterPanel(new Panel1());
             PanelManager.SwitchTo<LoginPanel>();
 
 
