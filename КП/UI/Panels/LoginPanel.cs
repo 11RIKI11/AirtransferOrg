@@ -17,18 +17,14 @@ public class LoginPanel : UserControl
 
     public LoginPanel()
     {
-        this.Dock = DockStyle.Fill;
+        this.Dock = DockStyle.Fill;//Если Fill, то PanelManager сам задаст размер
         this.BackColor = Color.LightSkyBlue;
-        ParentChanged += LoginPanel_ParentChanged;
+        SizeChanged += LoginPanel_SizeChanged;//сработает после изменения размера(когда растянится)
     }
 
-    public void LoginPanel_ParentChanged(object sender, EventArgs e)
+    public void LoginPanel_SizeChanged(object sender, EventArgs e)
     {
-        if (this.Parent == null)
-            throw new Exception();
-
-        this.Size = this.Parent.Size;
-        ParentChanged -= LoginPanel_ParentChanged;
+        SizeChanged += LoginPanel_SizeChanged;//Отпишись
 
         containerPanel = new Panel()
         {
@@ -133,7 +129,7 @@ public class LoginPanel : UserControl
             return;
         }
 
-        var user = new { email = "123", password = "123" };//TODO Запрос в бд
+        var user = new { email = "user1@example.com", password = "123" };//TODO Запрос в бд
         if (user is null)
         {
             MessageDisplay.ShowMessage("Пользователь с таким email не найден", КП.Core.Enums.MessageType.Error);

@@ -15,18 +15,14 @@ public class RegisterPanel : UserControl
 
     public RegisterPanel()
     {
+        this.Dock = DockStyle.Fill;
         this.BackColor = Color.LightSkyBlue;
-        ParentChanged += RegisterPanel_ParentChanged;
+        SizeChanged += RegisterPanel_SizeChanged;
     }
 
-    public void RegisterPanel_ParentChanged(object sender, EventArgs e)
+    public void RegisterPanel_SizeChanged(object sender, EventArgs e)
     {
-        //Костыль т.к. panel не растягивается при создании из-за того что нет родителя,
-        //поэтому растягиваем вручную как только он появился
-        if (this.Parent == null)
-            throw new Exception();
-        this.Size = this.Parent.Size;
-        ParentChanged -= RegisterPanel_ParentChanged;
+        SizeChanged -= RegisterPanel_SizeChanged;
 
         containerPanel = new Panel()
         {

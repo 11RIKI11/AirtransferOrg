@@ -24,6 +24,10 @@ namespace КП.Infrastructure
         {
             if (!panels.ContainsKey(panel.GetType()))
             {
+                if (panel.Dock == DockStyle.Fill)
+                {
+                    panel.Size = _parentControl.Size;
+                }
                 panels[panel.GetType()] = panel;
             }
         } 
