@@ -49,6 +49,9 @@
             sortAscBtn = new Button();
             sortLabel = new Label();
             sortFieldLabel = new Label();
+            departureDateSelectCalendar = new MonthCalendar();
+            departureDateselectLabel = new Label();
+            resetFiltersBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)flightListDataGrid).BeginInit();
             SuspendLayout();
             // 
@@ -156,7 +159,7 @@
             flightListDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             flightListDataGrid.Location = new Point(130, 48);
             flightListDataGrid.Name = "flightListDataGrid";
-            flightListDataGrid.Size = new Size(508, 499);
+            flightListDataGrid.Size = new Size(938, 561);
             flightListDataGrid.TabIndex = 24;
             // 
             // showMyFlightsBtn
@@ -181,7 +184,7 @@
             // 
             searchTextBox.Location = new Point(725, 144);
             searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(112, 23);
+            searchTextBox.Size = new Size(136, 23);
             searchTextBox.TabIndex = 27;
             // 
             // showAllFlights
@@ -199,7 +202,7 @@
             sortFieldSelect.Items.AddRange(new object[] { "Время отправления", "Время прибытия", "Статус", "Аэропрт отправления", "Аэропорт прибытия" });
             sortFieldSelect.Location = new Point(675, 353);
             sortFieldSelect.Name = "sortFieldSelect";
-            sortFieldSelect.Size = new Size(122, 23);
+            sortFieldSelect.Size = new Size(136, 23);
             sortFieldSelect.TabIndex = 29;
             // 
             // sortDescBtn
@@ -238,11 +241,40 @@
             sortFieldLabel.TabIndex = 33;
             sortFieldLabel.Text = "Сортировать по:";
             // 
+            // departureDateSelectCalendar
+            // 
+            departureDateSelectCalendar.Location = new Point(734, 201);
+            departureDateSelectCalendar.MaxSelectionCount = 1;
+            departureDateSelectCalendar.MinDate = new DateTime(2025, 1, 23, 0, 0, 0, 0);
+            departureDateSelectCalendar.Name = "departureDateSelectCalendar";
+            departureDateSelectCalendar.TabIndex = 34;
+            // 
+            // departureDateselectLabel
+            // 
+            departureDateselectLabel.AutoSize = true;
+            departureDateselectLabel.Location = new Point(805, 170);
+            departureDateselectLabel.Name = "departureDateselectLabel";
+            departureDateselectLabel.Size = new Size(164, 15);
+            departureDateselectLabel.TabIndex = 35;
+            departureDateselectLabel.Text = "Выберите дату отправления:";
+            // 
+            // resetFiltersBtn
+            // 
+            resetFiltersBtn.Location = new Point(400, 289);
+            resetFiltersBtn.Name = "resetFiltersBtn";
+            resetFiltersBtn.Size = new Size(136, 41);
+            resetFiltersBtn.TabIndex = 36;
+            resetFiltersBtn.Text = "Сбросить фильтры";
+            resetFiltersBtn.UseVisualStyleBackColor = true;
+            // 
             // FlightListPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
+            Controls.Add(resetFiltersBtn);
+            Controls.Add(departureDateselectLabel);
+            Controls.Add(departureDateSelectCalendar);
             Controls.Add(sortFieldLabel);
             Controls.Add(sortLabel);
             Controls.Add(sortAscBtn);
@@ -265,7 +297,7 @@
             Controls.Add(flightTimetableBtn);
             Controls.Add(myBookingInfoBtn);
             Name = "FlightListPanel";
-            Size = new Size(937, 618);
+            Size = new Size(1167, 696);
             SizeChanged += FlightListPanel_SizeChanged;
             ((System.ComponentModel.ISupportInitialize)flightListDataGrid).EndInit();
             ResumeLayout(false);
@@ -295,5 +327,8 @@
         private Button sortAscBtn;
         private Label sortLabel;
         private Label sortFieldLabel;
+        private MonthCalendar departureDateSelectCalendar; // Календарь на выбор дня отправления
+        private Label departureDateselectLabel;//Лейбл на выбор дня отправления
+        private Button resetFiltersBtn;//Сброс фильтров
     }
 }
