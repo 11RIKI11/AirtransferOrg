@@ -1,6 +1,6 @@
 ﻿namespace КП.UI.Panels
 {
-    partial class FlightListPanel
+    partial class MyTickets
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -39,22 +39,16 @@
             logoutBtn = new Button();
             flightTimetableBtn = new Button();
             myBookingInfoBtn = new Button();
+            showMyPaidTicketsBtn = new Button();
             flightListDataGrid = new DataGridView();
-            showMyFlightsBtn = new Button();
-            searchLabel = new Label();
-            searchTextBox = new TextBox();
-            showAllFlights = new Button();
-            sortFieldSelect = new ComboBox();
-            sortDescBtn = new Button();
-            sortAscBtn = new Button();
-            sortLabel = new Label();
-            sortFieldLabel = new Label();
+            showMyUnpaidTicketsBtn = new Button();
+            showAllTicketButton = new Button();
             ((System.ComponentModel.ISupportInitialize)flightListDataGrid).BeginInit();
             SuspendLayout();
             // 
             // showMyCrewBtn
             // 
-            showMyCrewBtn.Location = new Point(251, 95);
+            showMyCrewBtn.Location = new Point(277, 93);
             showMyCrewBtn.Name = "showMyCrewBtn";
             showMyCrewBtn.Size = new Size(136, 41);
             showMyCrewBtn.TabIndex = 23;
@@ -63,7 +57,7 @@
             // 
             // createFlightBtn
             // 
-            createFlightBtn.Location = new Point(393, 95);
+            createFlightBtn.Location = new Point(419, 93);
             createFlightBtn.Name = "createFlightBtn";
             createFlightBtn.Size = new Size(136, 41);
             createFlightBtn.TabIndex = 22;
@@ -72,7 +66,7 @@
             // 
             // showStaffBtn
             // 
-            showStaffBtn.Location = new Point(393, 48);
+            showStaffBtn.Location = new Point(419, 46);
             showStaffBtn.Name = "showStaffBtn";
             showStaffBtn.Size = new Size(136, 41);
             showStaffBtn.TabIndex = 21;
@@ -81,7 +75,7 @@
             // 
             // showCrewBtn
             // 
-            showCrewBtn.Location = new Point(251, 48);
+            showCrewBtn.Location = new Point(277, 46);
             showCrewBtn.Name = "showCrewBtn";
             showCrewBtn.Size = new Size(136, 41);
             showCrewBtn.TabIndex = 20;
@@ -90,7 +84,7 @@
             // 
             // airlinesBtn
             // 
-            airlinesBtn.Location = new Point(109, 48);
+            airlinesBtn.Location = new Point(135, 46);
             airlinesBtn.Name = "airlinesBtn";
             airlinesBtn.Size = new Size(136, 41);
             airlinesBtn.TabIndex = 19;
@@ -99,7 +93,7 @@
             // 
             // swowMyAirlineBtn
             // 
-            swowMyAirlineBtn.Location = new Point(535, 95);
+            swowMyAirlineBtn.Location = new Point(561, 93);
             swowMyAirlineBtn.Name = "swowMyAirlineBtn";
             swowMyAirlineBtn.Size = new Size(136, 41);
             swowMyAirlineBtn.TabIndex = 18;
@@ -108,7 +102,7 @@
             // 
             // showUsersBtn
             // 
-            showUsersBtn.Location = new Point(535, 48);
+            showUsersBtn.Location = new Point(561, 46);
             showUsersBtn.Name = "showUsersBtn";
             showUsersBtn.Size = new Size(136, 41);
             showUsersBtn.TabIndex = 17;
@@ -117,7 +111,7 @@
             // 
             // profileBtn
             // 
-            profileBtn.Location = new Point(109, 7);
+            profileBtn.Location = new Point(135, 5);
             profileBtn.Name = "profileBtn";
             profileBtn.Size = new Size(136, 41);
             profileBtn.TabIndex = 16;
@@ -126,7 +120,7 @@
             // 
             // logoutBtn
             // 
-            logoutBtn.Location = new Point(535, 7);
+            logoutBtn.Location = new Point(561, 5);
             logoutBtn.Name = "logoutBtn";
             logoutBtn.Size = new Size(136, 41);
             logoutBtn.TabIndex = 15;
@@ -135,7 +129,7 @@
             // 
             // flightTimetableBtn
             // 
-            flightTimetableBtn.Location = new Point(251, 7);
+            flightTimetableBtn.Location = new Point(277, 5);
             flightTimetableBtn.Name = "flightTimetableBtn";
             flightTimetableBtn.Size = new Size(136, 41);
             flightTimetableBtn.TabIndex = 14;
@@ -144,114 +138,56 @@
             // 
             // myBookingInfoBtn
             // 
-            myBookingInfoBtn.Location = new Point(393, 7);
+            myBookingInfoBtn.Location = new Point(419, 5);
             myBookingInfoBtn.Name = "myBookingInfoBtn";
             myBookingInfoBtn.Size = new Size(136, 41);
             myBookingInfoBtn.TabIndex = 13;
             myBookingInfoBtn.Text = "Мои билеты";
             myBookingInfoBtn.UseVisualStyleBackColor = true;
             // 
+            // showMyPaidTicketsBtn
+            // 
+            showMyPaidTicketsBtn.Location = new Point(677, 150);
+            showMyPaidTicketsBtn.Name = "showMyPaidTicketsBtn";
+            showMyPaidTicketsBtn.Size = new Size(146, 41);
+            showMyPaidTicketsBtn.TabIndex = 27;
+            showMyPaidTicketsBtn.Text = "Оплаченные билеты";
+            showMyPaidTicketsBtn.UseVisualStyleBackColor = true;
+            // 
             // flightListDataGrid
             // 
             flightListDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            flightListDataGrid.Location = new Point(130, 48);
+            flightListDataGrid.Location = new Point(205, 77);
             flightListDataGrid.Name = "flightListDataGrid";
             flightListDataGrid.Size = new Size(508, 499);
-            flightListDataGrid.TabIndex = 24;
+            flightListDataGrid.TabIndex = 26;
             // 
-            // showMyFlightsBtn
+            // showMyUnpaidTicketsBtn
             // 
-            showMyFlightsBtn.Location = new Point(535, 167);
-            showMyFlightsBtn.Name = "showMyFlightsBtn";
-            showMyFlightsBtn.Size = new Size(136, 41);
-            showMyFlightsBtn.TabIndex = 25;
-            showMyFlightsBtn.Text = "Мои рейсы";
-            showMyFlightsBtn.UseVisualStyleBackColor = true;
+            showMyUnpaidTicketsBtn.Location = new Point(677, 197);
+            showMyUnpaidTicketsBtn.Name = "showMyUnpaidTicketsBtn";
+            showMyUnpaidTicketsBtn.Size = new Size(146, 41);
+            showMyUnpaidTicketsBtn.TabIndex = 28;
+            showMyUnpaidTicketsBtn.Text = "Неоплаченные билеты";
+            showMyUnpaidTicketsBtn.UseVisualStyleBackColor = true;
             // 
-            // searchLabel
+            // showAllTicketButton
             // 
-            searchLabel.AutoSize = true;
-            searchLabel.Location = new Point(725, 121);
-            searchLabel.Name = "searchLabel";
-            searchLabel.Size = new Size(48, 15);
-            searchLabel.TabIndex = 26;
-            searchLabel.Text = "Искать:";
+            showAllTicketButton.Location = new Point(677, 244);
+            showAllTicketButton.Name = "showAllTicketButton";
+            showAllTicketButton.Size = new Size(146, 41);
+            showAllTicketButton.TabIndex = 29;
+            showAllTicketButton.Text = "Все мои билеты";
+            showAllTicketButton.UseVisualStyleBackColor = true;
             // 
-            // searchTextBox
-            // 
-            searchTextBox.Location = new Point(725, 144);
-            searchTextBox.Name = "searchTextBox";
-            searchTextBox.Size = new Size(112, 23);
-            searchTextBox.TabIndex = 27;
-            // 
-            // showAllFlights
-            // 
-            showAllFlights.Location = new Point(608, 245);
-            showAllFlights.Name = "showAllFlights";
-            showAllFlights.Size = new Size(136, 41);
-            showAllFlights.TabIndex = 28;
-            showAllFlights.Text = "Все рейсы";
-            showAllFlights.UseVisualStyleBackColor = true;
-            // 
-            // sortFieldSelect
-            // 
-            sortFieldSelect.FormattingEnabled = true;
-            sortFieldSelect.Items.AddRange(new object[] { "Время отправления", "Время прибытия", "Статус", "Аэропрт отправления", "Аэропорт прибытия" });
-            sortFieldSelect.Location = new Point(675, 353);
-            sortFieldSelect.Name = "sortFieldSelect";
-            sortFieldSelect.Size = new Size(122, 23);
-            sortFieldSelect.TabIndex = 29;
-            // 
-            // sortDescBtn
-            // 
-            sortDescBtn.Location = new Point(644, 423);
-            sortDescBtn.Name = "sortDescBtn";
-            sortDescBtn.Size = new Size(136, 41);
-            sortDescBtn.TabIndex = 30;
-            sortDescBtn.Text = "По убыванию";
-            sortDescBtn.UseVisualStyleBackColor = true;
-            // 
-            // sortAscBtn
-            // 
-            sortAscBtn.Location = new Point(758, 306);
-            sortAscBtn.Name = "sortAscBtn";
-            sortAscBtn.Size = new Size(136, 41);
-            sortAscBtn.TabIndex = 31;
-            sortAscBtn.Text = "По возрастанию";
-            sortAscBtn.UseVisualStyleBackColor = true;
-            // 
-            // sortLabel
-            // 
-            sortLabel.AutoSize = true;
-            sortLabel.Location = new Point(828, 406);
-            sortLabel.Name = "sortLabel";
-            sortLabel.Size = new Size(76, 15);
-            sortLabel.TabIndex = 32;
-            sortLabel.Text = "Сортировка:";
-            // 
-            // sortFieldLabel
-            // 
-            sortFieldLabel.AutoSize = true;
-            sortFieldLabel.Location = new Point(805, 492);
-            sortFieldLabel.Name = "sortFieldLabel";
-            sortFieldLabel.Size = new Size(98, 15);
-            sortFieldLabel.TabIndex = 33;
-            sortFieldLabel.Text = "Сортировать по:";
-            // 
-            // FlightListPanel
+            // MyTickets
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
-            Controls.Add(sortFieldLabel);
-            Controls.Add(sortLabel);
-            Controls.Add(sortAscBtn);
-            Controls.Add(sortDescBtn);
-            Controls.Add(sortFieldSelect);
-            Controls.Add(showAllFlights);
-            Controls.Add(searchTextBox);
-            Controls.Add(searchLabel);
-            Controls.Add(showMyFlightsBtn);
+            Controls.Add(showAllTicketButton);
+            Controls.Add(showMyUnpaidTicketsBtn);
+            Controls.Add(showMyPaidTicketsBtn);
             Controls.Add(flightListDataGrid);
             Controls.Add(showMyCrewBtn);
             Controls.Add(createFlightBtn);
@@ -264,12 +200,10 @@
             Controls.Add(logoutBtn);
             Controls.Add(flightTimetableBtn);
             Controls.Add(myBookingInfoBtn);
-            Name = "FlightListPanel";
-            Size = new Size(937, 618);
-            SizeChanged += FlightListPanel_SizeChanged;
+            Name = "MyTickets";
+            Size = new Size(1129, 670);
             ((System.ComponentModel.ISupportInitialize)flightListDataGrid).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -285,15 +219,9 @@
         private Button logoutBtn;
         private Button flightTimetableBtn;
         private Button myBookingInfoBtn;
+        private Button showMyPaidTicketsBtn;
         private DataGridView flightListDataGrid;
-        private Button showMyFlightsBtn;
-        private Label searchLabel;
-        private TextBox searchTextBox;
-        private Button showAllFlights;
-        private ComboBox sortFieldSelect;
-        private Button sortDescBtn;
-        private Button sortAscBtn;
-        private Label sortLabel;
-        private Label sortFieldLabel;
+        private Button showMyUnpaidTicketsBtn;
+        private Button showAllTicketButton;
     }
 }

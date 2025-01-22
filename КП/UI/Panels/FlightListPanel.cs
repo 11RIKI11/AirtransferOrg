@@ -32,6 +32,15 @@ namespace КП.UI.Panels
             showMyCrewBtn.Location = new Point(createFlightBtn.Location.X - showMyCrewBtn.Width - 20, 20);
             flightListDataGrid.Location = new Point(this.Width/2 - flightListDataGrid.Width/2, this.Height/2 - flightListDataGrid.Height/2);
             showMyFlightsBtn.Location = new Point(flightListDataGrid.Location.X + flightListDataGrid.Width + 40, flightListDataGrid.Location.Y + showMyFlightsBtn.Height);
+            searchLabel.Location = new Point(flightListDataGrid.Location.X + flightListDataGrid.Width + 40, flightListDataGrid.Location.Y + showMyFlightsBtn.Height - searchTextBox.Height);
+            searchTextBox.Location = new Point(searchLabel.Location.X, searchLabel.Location.Y + searchTextBox.Height);
+            showMyFlightsBtn.Location = new Point(searchTextBox.Location.X, searchTextBox.Location.Y + showMyFlightsBtn.Height);
+            showAllFlights.Location = new Point(showMyFlightsBtn.Location.X, showMyFlightsBtn.Location.Y + showMyFlightsBtn.Height + 10);
+            sortLabel.Location = new Point(showAllFlights.Location.X, showAllFlights.Location.Y + showAllFlights.Height + 10);
+            sortFieldLabel.Location = new Point(sortLabel.Location.X, sortLabel.Location.Y + sortLabel.Height);
+            sortFieldSelect.Location = new Point(sortFieldLabel.Location.X, sortFieldLabel.Location.Y + sortFieldLabel.Height);
+            sortAscBtn.Location = new Point(sortFieldSelect.Location.X, sortFieldSelect.Location.Y + sortFieldSelect.Height + 10);
+            sortDescBtn.Location = new Point(sortAscBtn.Location.X, sortAscBtn.Location.Y + sortAscBtn.Height + 10);
         }
     }
 }
