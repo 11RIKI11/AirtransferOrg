@@ -166,7 +166,7 @@ namespace КП.Infrastructure
 
             tableLayoutPanel.Controls.Add(headerPanel, 0, 0);
             tableLayoutPanel.Controls.Add(separatorLine, 0, 1);
-            tableLayoutPanel.Controls.Add(new Label { Text = message, Font = new Font("Arial", 12), ForeColor = Color.White, TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 0, 2);
+            tableLayoutPanel.Controls.Add(new Label { Text = message, Font = new Font("Arial", 12), AutoSize = false, ForeColor = Color.White, TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 0, 2);
 
             messagePanel.Controls.Add(tableLayoutPanel);
 

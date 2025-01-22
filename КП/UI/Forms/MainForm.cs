@@ -8,26 +8,28 @@ namespace КП
         public MainForm()
         {
             InitializeComponent();
-            Load += MainForm_Load;
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             MessageDisplay.RegisterParentForm(this);
             PanelManager.RegistrationParentControl(this);
 
+            Shown += MainForm_Load;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             //Переключение между панелями
+            PanelManager.RegisterPanel(new LoginPanel());
+            PanelManager.RegisterPanel(new RegisterPanel());
+
             PanelManager.RegisterPanel(new Panel1());
-            PanelManager.RegisterPanel(new Panel2());
-            PanelManager.SwitchTo<Panel1>();
+            PanelManager.SwitchTo<LoginPanel>();
 
 
             //Форма для логов
             LogForm logForm = new LogForm();
             logForm.Show();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            //Пример использования окон для сообщений
-            MessageDisplay.ShowMessage("aaaaaaaa", Core.Enums.MessageType.Error);
-            MessageDisplay.ShowMessage("bbbbbbbb", Core.Enums.MessageType.Success);
         }
     }
 }
