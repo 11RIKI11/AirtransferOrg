@@ -1,7 +1,8 @@
+using КП.Core.Entities;
 using КП.Forms;
 using КП.Infrastructure;
 
-namespace КП.Core.Entities
+namespace КП
 {
     internal static class Program
     {
