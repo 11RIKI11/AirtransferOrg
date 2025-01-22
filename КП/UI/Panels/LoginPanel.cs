@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using КП.Infrastructure;
+using КП.UI.Panels;
 
 public class LoginPanel : UserControl
 {
@@ -148,7 +149,7 @@ public class LoginPanel : UserControl
         }
         UserSession.Login(user.Id, user.Role.Name);
         MessageDisplay.ShowMessage("Вы успешно вошли в аккаунт", КП.Core.Enums.MessageType.Success);
-        //PanelManager.SwitchTo<Panel1>();
+        PanelManager.SwitchTo<MainPanel>();
     }
     private string ValidateLoginFields(string email, string password)
     {

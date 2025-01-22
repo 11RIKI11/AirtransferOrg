@@ -1,5 +1,6 @@
 using КП.Infrastructure;
 using КП.Forms;
+using КП.UI.Panels;
 
 namespace КП
 {
@@ -22,6 +23,8 @@ namespace КП
             //Переключение между панелями
             PanelManager.RegisterPanel(new LoginPanel());
             PanelManager.RegisterPanel(new RegisterPanel());
+            PanelManager.RegisterPanel(new MainPanel());
+            PanelManager.RegisterPanel(new FlightListPanel());
 
             PanelManager.SwitchTo<LoginPanel>();
 
