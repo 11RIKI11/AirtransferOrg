@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using КП.Core.Entities;
@@ -32,6 +33,8 @@ namespace КП.UI.Panels
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowStaff(null, EventArgs.Empty); };
             sortFieldSelect.SelectedIndexChanged += (s, e) => { ShowStaff(null, EventArgs.Empty); };
             resetFiltersBtn.Click += ClearFilter_Click;
+
+           // staffListDataGrid.CellEndEdit += StaffListDataGrid_CellEndEdit;
         }
 
         private void CreateMainMenu(object? sender, EventArgs e)
@@ -51,22 +54,23 @@ namespace КП.UI.Panels
             var staff = await GetStaff();
 
             staffListDataGrid.Columns.Clear();
-
-            staffListDataGrid.Columns.Add("FirstName", "Имя");
-            staffListDataGrid.Columns.Add("LastName", "Фамилия");
-            staffListDataGrid.Columns.Add("Email", "Электронная почта");
-            staffListDataGrid.Columns.Add("Position", "Должность");
+            staffListDataGrid.AllowUserToAddRows = true;
+            DataGridViewHelper.AddColumn(staffListDataGrid, "FirstName", "Имя", new List<string>() { "ValidateFirstName" });
+            DataGridViewHelper.AddColumn(staffListDataGrid, "LastName", "Фамилия", new List<string>() { "ValidateLastName" });
+            staffListDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Email", HeaderText = "Email", ReadOnly = true });
+            staffListDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Position", HeaderText = "Должность", ReadOnly = true });
 
             staffListDataGrid.Rows.Clear();
 
             foreach (var employee in staff)
             {
-                staffListDataGrid.Rows.Add(
+                var rowIndex = staffListDataGrid.Rows.Add(
                     employee.IdNavigation.FirstName,
                     employee.IdNavigation.LastName,
                     employee.IdNavigation.Email,
                     employee.Position?.Name ?? "Не назначен"
                 );
+                staffListDataGrid.Rows[rowIndex].Tag = employee.Id;
             }
         }
 
