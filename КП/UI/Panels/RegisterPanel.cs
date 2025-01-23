@@ -147,6 +147,14 @@ public partial class RegisterPanel : UserControl
             return;
         }
 
+        var context = DbContextFactory.CreateContext();
+        bool existUser = context.Users.Any(u => u.Email == emailTextBox.Text || u.PhoneNumber ==  phoneTextBox.Text);
+        if (existUser)
+        {
+            MessageDisplay.ShowMessage("Пользователь с таким email или номером телефона существует", Core.Enums.MessageType.Error);
+            return;
+        }
+
         var user = new User()
         {
             Email = emailTextBox.Text,
@@ -157,7 +165,7 @@ public partial class RegisterPanel : UserControl
             RoleId = (short)(roleComboBox.SelectedIndex + 1),
         };
 
-        var context = DbContextFactory.CreateContext();
+        
         context.Users.Add(user);
         context.SaveChanges();
 
