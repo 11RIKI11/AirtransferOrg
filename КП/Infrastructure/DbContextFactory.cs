@@ -8,7 +8,7 @@ namespace КП.Infrastructure
         public static ApplicationDbContext CreateContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=airtransfer_organization;Username=postgres;Password=BaBaaH228!!!", x => x.UseNodaTime());
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=airtransfer_organization;Username=postgres;Password=20051022", x => x.UseNodaTime());
 
             return new ApplicationDbContext(optionsBuilder.Options);
         }
