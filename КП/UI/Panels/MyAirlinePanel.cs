@@ -26,8 +26,8 @@ namespace КП.UI.Panels
 
         private void MyAirlinePanel_SizeChanged(object sender, EventArgs e)
         {
-            aircraftsListDataGrid.Location = new Point(this.Width / 2 - aircraftsListDataGrid.Width / 2, this.Height / 2 - aircraftsListDataGrid.Height / 1,7);
-            airlineFlightsDataGrid.Location = new Point(aircraftsListDataGrid.Location.X + aircraftsListDataGrid.Width + 20, aircraftsListDataGrid.Location.Y);
+            aircraftsListDataGrid.Location = new Point(this.Width / 2 - aircraftsListDataGrid.Width / 2, this.Height / 2 - aircraftsListDataGrid.Height / 2 - 80);
+            airlineFlightsDataGrid.Location = new Point(aircraftsListDataGrid.Location.X, aircraftsListDataGrid.Location.Y + aircraftsListDataGrid.Height + 20);
             searchLabel.Location = new Point(aircraftsListDataGrid.Location.X + aircraftsListDataGrid.Width + 40, aircraftsListDataGrid.Location.Y + searchLabel.Height);
             searchTextBox.Location = new Point(searchLabel.Location.X, searchLabel.Location.Y + searchTextBox.Height);
             resetFiltersBtn.Location = new Point(searchTextBox.Location.X, searchTextBox.Location.Y + resetFiltersBtn.Height);

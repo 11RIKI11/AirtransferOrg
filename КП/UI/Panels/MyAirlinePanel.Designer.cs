@@ -111,7 +111,7 @@
             aircraftsListDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             aircraftsListDataGrid.Location = new Point(116, 19);
             aircraftsListDataGrid.Name = "aircraftsListDataGrid";
-            aircraftsListDataGrid.Size = new Size(338, 380);
+            aircraftsListDataGrid.Size = new Size(546, 380);
             aircraftsListDataGrid.TabIndex = 60;
             // 
             // sortFieldSelect
@@ -157,9 +157,9 @@
             // airlineFlightsDataGrid
             // 
             airlineFlightsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            airlineFlightsDataGrid.Location = new Point(460, 19);
+            airlineFlightsDataGrid.Location = new Point(264, 81);
             airlineFlightsDataGrid.Name = "airlineFlightsDataGrid";
-            airlineFlightsDataGrid.Size = new Size(346, 380);
+            airlineFlightsDataGrid.Size = new Size(546, 266);
             airlineFlightsDataGrid.TabIndex = 72;
             // 
             // MyAirlinePanel
