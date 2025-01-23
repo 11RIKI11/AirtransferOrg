@@ -34,7 +34,26 @@ namespace КП.UI.Panels
             sortFieldSelect.SelectedIndexChanged += (s, e) => { ShowStaff(null, EventArgs.Empty); };
             resetFiltersBtn.Click += ClearFilter_Click;
 
-           // staffListDataGrid.CellEndEdit += StaffListDataGrid_CellEndEdit;
+            staffListDataGrid.CellEndEdit += StaffListDataGrid_CellEndEdit;
+        }
+
+        private async void StaffListDataGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = staffListDataGrid.Rows[e.RowIndex];
+            var context = DbContextFactory.CreateContext();
+
+            // Найти сотрудника по ID
+            var staffId = (long)staffListDataGrid.Rows[e.RowIndex].Tag;
+            var staff = await context.Staff.Include(s => s.IdNavigation).FirstOrDefaultAsync(s => s.Id == staffId);
+
+            if (staff != null)
+            {
+                staff.IdNavigation.FirstName = row.Cells["FirstName"].Value.ToString().Trim();
+                staff.IdNavigation.LastName = row.Cells["LastName"].Value.ToString().Trim();
+                staff.IdNavigation.Email = row.Cells["Email"].Value.ToString().Trim();
+
+                await context.SaveChangesAsync();
+            }
         }
 
         private void CreateMainMenu(object? sender, EventArgs e)
