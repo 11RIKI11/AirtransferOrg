@@ -33,8 +33,8 @@ namespace КП.UI.Panels
 
         private void MyAirlinePanel_SizeChanged(object sender, EventArgs e)
         {
-            aircraftsListDataGrid.Location = new Point(this.Width / 2 - aircraftsListDataGrid.Width / 2, this.Height / 2 - aircraftsListDataGrid.Height / 2 - 80);
-            airlineFlightsDataGrid.Location = new Point(aircraftsListDataGrid.Location.X, aircraftsListDataGrid.Location.Y + aircraftsListDataGrid.Height + 40);
+            aircraftsListDataGrid.Location = new Point(this.Width / 2 - aircraftsListDataGrid.Width - aircraftsListDataGrid.Width/4, this.Height / 2 - aircraftsListDataGrid.Height / 2 - 80);
+            airlineFlightsDataGrid.Location = new Point(aircraftsListDataGrid.Location.X + aircraftsListDataGrid.Width + 40 + sortAscBtn.Width + 40, aircraftsListDataGrid.Location.Y);
             searchLabel.Location = new Point(aircraftsListDataGrid.Location.X + aircraftsListDataGrid.Width + 40, aircraftsListDataGrid.Location.Y + searchLabel.Height);
             searchTextBox.Location = new Point(searchLabel.Location.X, searchLabel.Location.Y + searchTextBox.Height);
             resetFiltersBtn.Location = new Point(searchTextBox.Location.X, searchTextBox.Location.Y + resetFiltersBtn.Height);
@@ -42,22 +42,22 @@ namespace КП.UI.Panels
             sortFieldLabel.Location = new Point(sortLabel.Location.X, sortLabel.Location.Y + sortLabel.Height);
             sortFieldSelect.Location = new Point(sortFieldLabel.Location.X, sortFieldLabel.Location.Y + sortFieldLabel.Height);
             sortAscBtn.Location = new Point(sortFieldSelect.Location.X, sortFieldSelect.Location.Y + sortFieldSelect.Height + 10);
-            sortDescBtn.Location = new Point(sortAscBtn.Location.X, sortAscBtn.Location.Y + sortAscBtn.Height + 10);
+            sortDescBtn.Location = new Point(sortAscBtn.Location.X, sortAscBtn.Location.Y + sortAscBtn.Height);
             sortFieldSelect.SelectedIndex = 0;
             aircraftListLabel.Location = new Point(20, aircraftsListDataGrid.Location.Y - aircraftListLabel.Height);
             addressLabel.Location = new Point(20, aircraftListLabel.Location.Y - addressLabel.Height);
             airlineLabel.Location = new Point(20, addressLabel.Location.Y - airlineLabel.Height);
 
-            airlineFlightsLabel.Location = new Point(20, airlineFlightsDataGrid.Location.Y - airlineFlightsLabel.Height);
 
             searchFlightsLabel.Location = new Point(airlineFlightsDataGrid.Location.X + airlineFlightsDataGrid.Width + 40, airlineFlightsDataGrid.Location.Y + searchFlightsLabel.Height);
-            searchFlightTextBox.Location = new Point(searchFlightsLabel.Location.X, searchFlightsLabel.Location.Y + searchFlightsLabel.Height + 20);
-            flightsResetFiltersBtn.Location = new Point(searchFlightTextBox.Location.X, searchFlightTextBox.Location.Y + searchFlightTextBox.Height);
-            sortFlightLabel.Location = new Point(flightsResetFiltersBtn.Location.X, flightsResetFiltersBtn.Location.Y + flightsResetFiltersBtn.Height);
+            searchFlightTextBox.Location = new Point(searchFlightsLabel.Location.X, searchFlightsLabel.Location.Y + searchFlightTextBox.Height);
+            flightsResetFiltersBtn.Location = new Point(searchFlightTextBox.Location.X, searchFlightTextBox.Location.Y + flightsResetFiltersBtn.Height);
+            sortFlightLabel.Location = new Point(flightsResetFiltersBtn.Location.X, flightsResetFiltersBtn.Location.Y + flightsResetFiltersBtn.Height + 10);
             flightSortFieldLabel.Location = new Point(sortFlightLabel.Location.X, sortFlightLabel.Location.Y + flightSortFieldLabel.Height);
-            sortFlightsComboBox.Location = new Point(flightSortFieldLabel.Location.X, flightSortFieldLabel.Location.Y + sortFlightsComboBox.Height);
-            flightSortAscBtn.Location = new Point(sortFlightsComboBox.Location.X, sortFlightsComboBox.Location.Y + flightSortAscBtn.Height);
+            sortFlightsComboBox.Location = new Point(flightSortFieldLabel.Location.X, flightSortFieldLabel.Location.Y + flightSortFieldLabel.Height);
+            flightSortAscBtn.Location = new Point(sortFlightsComboBox.Location.X, sortFlightsComboBox.Location.Y + sortFlightsComboBox.Height + 10);
             flightsSortDesc.Location = new Point(flightSortAscBtn.Location.X, flightSortAscBtn.Location.Y + flightsSortDesc.Height);
+            sortFlightsComboBox.SelectedIndex = 0;
         }
 
     }

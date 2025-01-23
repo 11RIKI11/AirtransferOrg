@@ -20,6 +20,21 @@ namespace КП.UI.Panels
             {
                 showMyCrewBtn.Hide();
             }
+            if (UserSession.Role != "admin")
+            {
+                showStaffBtn.Hide();
+                showUsersBtn.Hide();
+                airlinesBtn.Hide();
+                showCrewBtn.Hide();
+            }
+            if (UserSession.Role != "airline_member")
+            {
+                swowMyAirlineBtn.Hide();
+            }
+            if(UserSession.Role != "user")
+            {
+                myBookingInfoBtn.Hide();
+            }
         }
 
         private void MainMenu_SizeChanged(object sender, EventArgs e)
@@ -29,14 +44,12 @@ namespace КП.UI.Panels
             logoutBtn.Location = new Point(this.Width - logoutBtn.Width - 20, 20);
             flightTimetableBtn.Location = new Point(logoutBtn.Location.X - flightTimetableBtn.Width - 20, 20);
             myBookingInfoBtn.Location = new Point(flightTimetableBtn.Location.X - myBookingInfoBtn.Width - 20, 20);
-            profileBtn.Location = new Point(myBookingInfoBtn.Location.X - profileBtn.Width - 20, 20);
-            showUsersBtn.Location = new Point(profileBtn.Location.X - profileBtn.Width - 20, 20);
+            showUsersBtn.Location = new Point(myBookingInfoBtn.Location.X - myBookingInfoBtn.Width - 20, 20);
             showStaffBtn.Location = new Point(showUsersBtn.Location.X - showStaffBtn.Width - 20, 20);
             showCrewBtn.Location = new Point(showStaffBtn.Location.X - showCrewBtn.Width - 20, 20);
             airlinesBtn.Location = new Point(showCrewBtn.Location.X - airlinesBtn.Width - 20, 20);
             swowMyAirlineBtn.Location = new Point(airlinesBtn.Location.X - swowMyAirlineBtn.Width - 20, 20);
-            createFlightBtn.Location = new Point(swowMyAirlineBtn.Location.X - createFlightBtn.Width - 20, 20);
-            showMyCrewBtn.Location = new Point(createFlightBtn.Location.X - showMyCrewBtn.Width - 20, 20);
+            showMyCrewBtn.Location = new Point(swowMyAirlineBtn.Location.X - showMyCrewBtn.Width - 20, 20);
         }
 
         private void flightTimetableBtn_Click(object sender, EventArgs e)
@@ -80,19 +93,10 @@ namespace КП.UI.Panels
             PanelManager.SwitchTo<ShowAirlinesPanel>();
         }
 
-        private void createFlightBtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void swowMyAirlineBtn_Click(object sender, EventArgs e)
         {
                PanelManager.SwitchTo<MyAirlinePanel>();
         }
 
-        private void profileBtn_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

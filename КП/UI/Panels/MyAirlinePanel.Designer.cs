@@ -49,7 +49,6 @@
             sortFlightsComboBox = new ComboBox();
             searchFlightTextBox = new TextBox();
             searchFlightsLabel = new Label();
-            airlineFlightsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)aircraftsListDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)airlineFlightsDataGrid).BeginInit();
             SuspendLayout();
@@ -159,16 +158,16 @@
             aircraftListLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             aircraftListLabel.Location = new Point(500, 237);
             aircraftListLabel.Name = "aircraftListLabel";
-            aircraftListLabel.Size = new Size(323, 32);
+            aircraftListLabel.Size = new Size(427, 32);
             aircraftListLabel.TabIndex = 71;
-            aircraftListLabel.Text = "Самолёты авиакомпании:";
+            aircraftListLabel.Text = "Самолёты и рейсы авиакомпании:";
             // 
             // airlineFlightsDataGrid
             // 
             airlineFlightsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             airlineFlightsDataGrid.Location = new Point(207, 272);
             airlineFlightsDataGrid.Name = "airlineFlightsDataGrid";
-            airlineFlightsDataGrid.Size = new Size(546, 296);
+            airlineFlightsDataGrid.Size = new Size(546, 380);
             airlineFlightsDataGrid.TabIndex = 72;
             // 
             // flightsResetFiltersBtn
@@ -242,22 +241,11 @@
             searchFlightsLabel.TabIndex = 73;
             searchFlightsLabel.Text = "Искать:";
             // 
-            // airlineFlightsLabel
-            // 
-            airlineFlightsLabel.AutoSize = true;
-            airlineFlightsLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            airlineFlightsLabel.Location = new Point(287, 247);
-            airlineFlightsLabel.Name = "airlineFlightsLabel";
-            airlineFlightsLabel.Size = new Size(277, 32);
-            airlineFlightsLabel.TabIndex = 81;
-            airlineFlightsLabel.Text = "Рейсы авиакомпании:";
-            // 
             // MyAirlinePanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
-            Controls.Add(airlineFlightsLabel);
             Controls.Add(flightsResetFiltersBtn);
             Controls.Add(flightSortAscBtn);
             Controls.Add(flightSortFieldLabel);
@@ -311,6 +299,5 @@
         private ComboBox sortFlightsComboBox;
         private TextBox searchFlightTextBox;
         private Label searchFlightsLabel;
-        private Label airlineFlightsLabel;
     }
 }

@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             showMyCrewBtn = new Button();
-            createFlightBtn = new Button();
             showStaffBtn = new Button();
             showCrewBtn = new Button();
             airlinesBtn = new Button();
             swowMyAirlineBtn = new Button();
             showUsersBtn = new Button();
-            profileBtn = new Button();
             logoutBtn = new Button();
             flightTimetableBtn = new Button();
             myBookingInfoBtn = new Button();
@@ -50,16 +48,6 @@
             showMyCrewBtn.Text = "Мой экипаж";
             showMyCrewBtn.UseVisualStyleBackColor = true;
             showMyCrewBtn.Click += showMyCrewBtn_Click;
-            // 
-            // createFlightBtn
-            // 
-            createFlightBtn.Location = new Point(409, 93);
-            createFlightBtn.Name = "createFlightBtn";
-            createFlightBtn.Size = new Size(136, 41);
-            createFlightBtn.TabIndex = 44;
-            createFlightBtn.Text = "Создать рейс";
-            createFlightBtn.UseVisualStyleBackColor = true;
-            createFlightBtn.Click += createFlightBtn_Click;
             // 
             // showStaffBtn
             // 
@@ -111,16 +99,6 @@
             showUsersBtn.UseVisualStyleBackColor = true;
             showUsersBtn.Click += showUsersBtn_Click;
             // 
-            // profileBtn
-            // 
-            profileBtn.Location = new Point(125, 5);
-            profileBtn.Name = "profileBtn";
-            profileBtn.Size = new Size(136, 41);
-            profileBtn.TabIndex = 38;
-            profileBtn.Text = "Профиль";
-            profileBtn.UseVisualStyleBackColor = true;
-            profileBtn.Click += profileBtn_Click;
-            // 
             // logoutBtn
             // 
             logoutBtn.Location = new Point(551, 5);
@@ -157,13 +135,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
             Controls.Add(showMyCrewBtn);
-            Controls.Add(createFlightBtn);
             Controls.Add(showStaffBtn);
             Controls.Add(showCrewBtn);
             Controls.Add(airlinesBtn);
             Controls.Add(swowMyAirlineBtn);
             Controls.Add(showUsersBtn);
-            Controls.Add(profileBtn);
             Controls.Add(logoutBtn);
             Controls.Add(flightTimetableBtn);
             Controls.Add(myBookingInfoBtn);
@@ -177,13 +153,11 @@
         #endregion
 
         private Button showMyCrewBtn;
-        private Button createFlightBtn;
         private Button showStaffBtn;
         private Button showCrewBtn;
         private Button airlinesBtn;
         private Button swowMyAirlineBtn;
         private Button showUsersBtn;
-        private Button profileBtn;
         private Button logoutBtn;
         private Button flightTimetableBtn;
         private Button myBookingInfoBtn;
