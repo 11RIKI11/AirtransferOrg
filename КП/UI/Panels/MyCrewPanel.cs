@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.EntityFrameworkCore;
 using КП.Core;
 using КП.Core.Entities;
 using КП.Infrastructure;
@@ -26,8 +20,8 @@ namespace КП.UI.Panels
             ParentChanged += MyCrewPanel_ParentChanged;
             ParentChanged += CreateMainMenu;
             ParentChanged += ShowCrew;
-            
-           
+
+
 
             sortAscBtn.Click += (s, e) => { sortAsc = true; ShowCrew(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowCrew(null, EventArgs.Empty); };
@@ -62,7 +56,7 @@ namespace КП.UI.Panels
 
         public async void ShowCrew(object sender, EventArgs e)
         {
-           // ParentChanged -= ShowCrew;
+            // ParentChanged -= ShowCrew;
             var crew = await GetCrew();
 
             myCrewListDataGrid.Columns.Clear();
