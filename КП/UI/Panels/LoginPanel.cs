@@ -127,8 +127,8 @@ public partial class LoginPanel : UserControl
         string password = passwordTextBox.Text;
 
 
-        email = "rep71@example.com";
-        password = "representative71password";
+        email = "aa@aa.aa";
+        password = "Qq1234";
 
         string validationMessage = ValidateLoginFields(email, password);
         if (!string.IsNullOrEmpty(validationMessage))

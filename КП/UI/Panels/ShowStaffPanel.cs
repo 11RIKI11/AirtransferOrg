@@ -57,7 +57,7 @@ namespace КП.UI.Panels
             staffListDataGrid.AllowUserToAddRows = true;
             DataGridViewHelper.AddColumn(staffListDataGrid, "FirstName", "Имя", new List<string>() { "ValidateFirstName" });
             DataGridViewHelper.AddColumn(staffListDataGrid, "LastName", "Фамилия", new List<string>() { "ValidateLastName" });
-            staffListDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Email", HeaderText = "Email", ReadOnly = true });
+            DataGridViewHelper.AddColumn(staffListDataGrid, "Email", "Email", new List<string>() { "ValidateEmail" });
             staffListDataGrid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Position", HeaderText = "Должность", ReadOnly = true });
 
             staffListDataGrid.Rows.Clear();

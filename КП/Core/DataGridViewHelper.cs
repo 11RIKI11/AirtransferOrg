@@ -152,6 +152,19 @@ public static class DataGridViewHelper
         return string.Empty;
     }
 
+    public static string ValidateEmail(string value)
+    {
+        if(string.IsNullOrEmpty(value))
+        {
+            return "Email не может быть пустым.";
+        }
+        if(!Regex.IsMatch(value, @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"))
+        {
+            return "Некорректный формат Email.";
+        }
+        return string.Empty;
+    }
+
     // Класс для хранения информации о валидационных правилах и гридах
     private class GridValidationInfo
     {
