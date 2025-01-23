@@ -36,6 +36,7 @@ namespace КП.UI.Panels
 
         private void CreateMainMenu(object? sender, EventArgs e)
         {
+            ParentChanged -= CreateMainMenu;
             var mainMenu = new MainMenu
             {
                 Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части

@@ -21,6 +21,7 @@ namespace КП.UI.Panels
 
         private void MainPanel_ParentChanged(object? sender, EventArgs e)
         {
+            ParentChanged -= MainPanel_ParentChanged;
             var mainMenu = new MainMenu
             {
                 Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части

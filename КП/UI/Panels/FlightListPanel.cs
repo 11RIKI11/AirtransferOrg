@@ -49,6 +49,7 @@ namespace КП.UI.Panels
 
         private void CreateMainMenu(object? sender, EventArgs e)
         {
+            ParentChanged -= CreateMainMenu;
             var mainMenu = new MainMenu
             {
                 Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
@@ -56,6 +57,7 @@ namespace КП.UI.Panels
 
             this.Controls.Add(mainMenu);
             mainMenu.BringToFront();  // Выводим панель на передний план
+            
         }
 
         public async void ShowFlights(object sender, EventArgs e)

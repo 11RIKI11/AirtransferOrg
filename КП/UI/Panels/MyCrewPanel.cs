@@ -17,14 +17,18 @@ namespace КП.UI.Panels
         private int pageSize = 50;
         private int currentPage = 0;
         private bool sortAsc = true;
-        private long? crewId = UserSession.UserId;
+        private long? crewId;
 
         public MyCrewPanel()
         {
             InitializeComponent();
 
-            ParentChanged += ShowCrew;
+            ParentChanged += MyCrewPanel_ParentChanged;
             ParentChanged += CreateMainMenu;
+            ParentChanged += ShowCrew;
+            
+           
+
             sortAscBtn.Click += (s, e) => { sortAsc = true; ShowCrew(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowCrew(null, EventArgs.Empty); };
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowCrew(null, EventArgs.Empty); };
@@ -33,8 +37,15 @@ namespace КП.UI.Panels
             ControlRemoved += MyCrewPanel_ControlRemoved;
         }
 
+        private void MyCrewPanel_ParentChanged(object? sender, EventArgs e)
+        {
+            ParentChanged -= MyCrewPanel_ParentChanged;
+            crewId = UserSession.UserId;
+        }
+
         private void CreateMainMenu(object? sender, EventArgs e)
         {
+            ParentChanged -= CreateMainMenu;
             var mainMenu = new MainMenu
             {
                 Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
@@ -51,6 +62,7 @@ namespace КП.UI.Panels
 
         public async void ShowCrew(object sender, EventArgs e)
         {
+           // ParentChanged -= ShowCrew;
             var crew = await GetCrew();
 
             myCrewListDataGrid.Columns.Clear();
@@ -139,7 +151,10 @@ namespace КП.UI.Panels
 
         public void SetData(dynamic data)
         {
-            crewId = data.crewId;
+            if (data != null)
+            {
+                crewId = data.crewId;
+            }
         }
     }
 }
