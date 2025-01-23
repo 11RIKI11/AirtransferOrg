@@ -24,19 +24,25 @@ namespace КП.UI.Panels
         {
             InitializeComponent();
 
+            ParentChanged += ShowTickets;
+            ParentChanged += CreateMainMenu;
+
+            sortAscBtn.Click += (s, e) => { sortAsc = true; ShowTickets(null, EventArgs.Empty); };
+            sortDescBtn.Click += (s, e) => { sortAsc = false; ShowTickets(null, EventArgs.Empty); };
+            searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowTickets(null, EventArgs.Empty); };
+            sortFieldSelect.SelectedIndexChanged += (s, e) => { ShowTickets(null, EventArgs.Empty); };
+            resetFiltersBtn.Click += ClearFilter_Click;
+        }
+
+        private void CreateMainMenu(object? sender, EventArgs e)
+        {
             var mainMenu = new MainMenu
             {
                 Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
             };
 
             this.Controls.Add(mainMenu);
-
-            ParentChanged += ShowTickets;
-            sortAscBtn.Click += (s, e) => { sortAsc = true; ShowTickets(null, EventArgs.Empty); };
-            sortDescBtn.Click += (s, e) => { sortAsc = false; ShowTickets(null, EventArgs.Empty); };
-            searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowTickets(null, EventArgs.Empty); };
-            sortFieldSelect.SelectedIndexChanged += (s, e) => { ShowTickets(null, EventArgs.Empty); };
-            resetFiltersBtn.Click += ClearFilter_Click;
+            mainMenu.BringToFront();  // Выводим панель на передний план
         }
 
         public async void ShowTickets(object sender, EventArgs e)

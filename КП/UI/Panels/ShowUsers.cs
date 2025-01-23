@@ -16,20 +16,26 @@ namespace КП.UI.Panels
         {
             InitializeComponent();
 
-            var mainMenu = new MainMenu
-            {
-                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
-            };
-
-            this.Controls.Add(mainMenu);
-
             ParentChanged += LoadUsers;
+            ParentChanged += CreateMainMenu;
+
             sortAscBtn.Click += (s, e) => { sortAsc = true; LoadUsers(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; LoadUsers(null, EventArgs.Empty); };
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; LoadUsers(null, EventArgs.Empty); };
             sortFieldSelect.SelectedIndexChanged += (s, e) => { LoadUsers(null, EventArgs.Empty); };
             roleSelectBox.SelectedIndexChanged += (s, e) => { LoadUsers(null, EventArgs.Empty); };
             resetFiltersBtn.Click += ClearFilter_Click;
+        }
+
+        private void CreateMainMenu(object? sender, EventArgs e)
+        {
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
+            mainMenu.BringToFront();  // Выводим панель на передний план
         }
 
         public async void LoadUsers(object sender, EventArgs e)

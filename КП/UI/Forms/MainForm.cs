@@ -37,8 +37,8 @@ namespace КП
 
 
             //Форма для логов
-            LogForm logForm = new LogForm();
-            logForm.Show();
+            //LogForm logForm = new LogForm();
+           // logForm.Show();
         }
     }
 }
