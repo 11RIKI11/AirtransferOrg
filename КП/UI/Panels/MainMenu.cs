@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using КП.Infrastructure;
 
 namespace КП.UI.Panels
 {
@@ -18,8 +19,6 @@ namespace КП.UI.Panels
         }
         private void MainMenu_SizeChanged(object sender, EventArgs e)
         {
-            this.Dock = DockStyle.Top;
-            this.Dock = DockStyle.Fill;
             this.Height = showMyCrewBtn.Location.Y + showMyCrewBtn.Height + 10;
             this.BringToFront();
             logoutBtn.Location = new Point(this.Width - logoutBtn.Width - 20, 20);
@@ -33,6 +32,27 @@ namespace КП.UI.Panels
             swowMyAirlineBtn.Location = new Point(airlinesBtn.Location.X - swowMyAirlineBtn.Width - 20, 20);
             createFlightBtn.Location = new Point(swowMyAirlineBtn.Location.X - createFlightBtn.Width - 20, 20);
             showMyCrewBtn.Location = new Point(createFlightBtn.Location.X - showMyCrewBtn.Width - 20, 20);
+        }
+
+        private void flightTimetableBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<FlightListPanel>();
+        }
+
+        private void myBookingInfoBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<MyTickets>();
+        }
+
+        private void showUsersBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<ShowUsers>();
+        }
+
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            UserSession.Logout();
+            PanelManager.SwitchTo<LoginPanel>();
         }
     }
 }

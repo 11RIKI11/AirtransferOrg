@@ -16,6 +16,7 @@ namespace КП
             PanelManager.RegistrationParentControl(this);
 
             Shown += MainForm_Load;
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)

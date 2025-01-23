@@ -15,6 +15,13 @@ namespace КП.UI.Panels
         public MyCrewPanel()
         {
             InitializeComponent();
+
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
         }
     }
 }

@@ -23,6 +23,14 @@ namespace КП.UI.Panels
         public MyTickets()
         {
             InitializeComponent();
+
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
+
             ParentChanged += ShowTickets;
             sortAscBtn.Click += (s, e) => { sortAsc = true; ShowTickets(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowTickets(null, EventArgs.Empty); };
@@ -121,17 +129,6 @@ namespace КП.UI.Panels
 
         private void MyTickets_SizeChanged(object sender, EventArgs e)
         {
-            logoutBtn.Location = new Point(this.Width - logoutBtn.Width - 20, 20);
-            flightTimetableBtn.Location = new Point(logoutBtn.Location.X - flightTimetableBtn.Width - 20, 20);
-            myBookingInfoBtn.Location = new Point(flightTimetableBtn.Location.X - myBookingInfoBtn.Width - 20, 20);
-            profileBtn.Location = new Point(myBookingInfoBtn.Location.X - profileBtn.Width - 20, 20);
-            showUsersBtn.Location = new Point(profileBtn.Location.X - profileBtn.Width - 20, 20);
-            showStaffBtn.Location = new Point(showUsersBtn.Location.X - showStaffBtn.Width - 20, 20);
-            showCrewBtn.Location = new Point(showStaffBtn.Location.X - showCrewBtn.Width - 20, 20);
-            airlinesBtn.Location = new Point(showCrewBtn.Location.X - airlinesBtn.Width - 20, 20);
-            swowMyAirlineBtn.Location = new Point(airlinesBtn.Location.X - swowMyAirlineBtn.Width - 20, 20);
-            createFlightBtn.Location = new Point(swowMyAirlineBtn.Location.X - createFlightBtn.Width - 20, 20);
-            showMyCrewBtn.Location = new Point(createFlightBtn.Location.X - showMyCrewBtn.Width - 20, 20);
             myTicketsListDataGrid.Location = new Point(this.Width / 2 - myTicketsListDataGrid.Width / 2, this.Height / 2 - myTicketsListDataGrid.Height / 2);
             searchLabel.Location = new Point(myTicketsListDataGrid.Location.X + myTicketsListDataGrid.Width + 40, myTicketsListDataGrid.Location.Y + resetFiltersBtn.Height - searchTextBox.Height);
             searchTextBox.Location = new Point(searchLabel.Location.X, searchLabel.Location.Y + searchTextBox.Height);

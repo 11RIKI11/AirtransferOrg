@@ -16,7 +16,13 @@ namespace КП.UI.Panels
         public MainPanel()
         {
             InitializeComponent();
-            
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
+            mainMenu.BringToFront();  // Выводим панель на передний план
         }
         private void MainPanel_SizeChanged(object sender, EventArgs e)
         {

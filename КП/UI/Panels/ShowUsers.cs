@@ -15,6 +15,14 @@ namespace КП.UI.Panels
         public ShowUsers()
         {
             InitializeComponent();
+
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
+
             ParentChanged += LoadUsers;
             sortAscBtn.Click += (s, e) => { sortAsc = true; LoadUsers(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; LoadUsers(null, EventArgs.Empty); };
@@ -85,17 +93,6 @@ namespace КП.UI.Panels
         }
         private void ShowUsers_SizeChanged(object sender, EventArgs e)
         {
-            logoutBtn.Location = new Point(this.Width - logoutBtn.Width - 20, 20);
-            flightTimetableBtn.Location = new Point(logoutBtn.Location.X - flightTimetableBtn.Width - 20, 20);
-            myBookingInfoBtn.Location = new Point(flightTimetableBtn.Location.X - myBookingInfoBtn.Width - 20, 20);
-            profileBtn.Location = new Point(myBookingInfoBtn.Location.X - profileBtn.Width - 20, 20);
-            showUsersBtn.Location = new Point(profileBtn.Location.X - profileBtn.Width - 20, 20);
-            showStaffBtn.Location = new Point(showUsersBtn.Location.X - showStaffBtn.Width - 20, 20);
-            showCrewBtn.Location = new Point(showStaffBtn.Location.X - showCrewBtn.Width - 20, 20);
-            airlinesBtn.Location = new Point(showCrewBtn.Location.X - airlinesBtn.Width - 20, 20);
-            swowMyAirlineBtn.Location = new Point(airlinesBtn.Location.X - swowMyAirlineBtn.Width - 20, 20);
-            createFlightBtn.Location = new Point(swowMyAirlineBtn.Location.X - createFlightBtn.Width - 20, 20);
-            showMyCrewBtn.Location = new Point(createFlightBtn.Location.X - showMyCrewBtn.Width - 20, 20);
             usersListDataGrid.Location = new Point(this.Width / 2 - usersListDataGrid.Width / 2, this.Height / 2 - usersListDataGrid.Height / 2);
             roleLabel.Location = new Point(usersListDataGrid.Location.X + usersListDataGrid.Width + 40, usersListDataGrid.Location.Y + roleLabel.Height);
             roleSelectBox.Location = new Point(roleLabel.Location.X, roleLabel.Location.Y + roleLabel.Height);

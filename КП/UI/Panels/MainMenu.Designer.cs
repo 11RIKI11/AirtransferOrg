@@ -103,6 +103,7 @@
             showUsersBtn.TabIndex = 39;
             showUsersBtn.Text = "Просмотреть пользователей";
             showUsersBtn.UseVisualStyleBackColor = true;
+            showUsersBtn.Click += showUsersBtn_Click;
             // 
             // profileBtn
             // 
@@ -121,6 +122,7 @@
             logoutBtn.TabIndex = 37;
             logoutBtn.Text = "Выход";
             logoutBtn.UseVisualStyleBackColor = true;
+            logoutBtn.Click += logoutBtn_Click;
             // 
             // flightTimetableBtn
             // 
@@ -130,6 +132,7 @@
             flightTimetableBtn.TabIndex = 36;
             flightTimetableBtn.Text = "Расписание рейсов";
             flightTimetableBtn.UseVisualStyleBackColor = true;
+            flightTimetableBtn.Click += flightTimetableBtn_Click;
             // 
             // myBookingInfoBtn
             // 
@@ -139,6 +142,7 @@
             myBookingInfoBtn.TabIndex = 35;
             myBookingInfoBtn.Text = "Мои билеты";
             myBookingInfoBtn.UseVisualStyleBackColor = true;
+            myBookingInfoBtn.Click += myBookingInfoBtn_Click;
             // 
             // MainMenu
             // 
@@ -158,8 +162,8 @@
             Controls.Add(myBookingInfoBtn);
             Name = "MainMenu";
             Size = new Size(690, 355);
+            SizeChanged += MainMenu_SizeChanged;
             ResumeLayout(false);
-            this.SizeChanged += MainMenu_SizeChanged;
         }
 
 
