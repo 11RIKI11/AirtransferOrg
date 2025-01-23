@@ -41,5 +41,10 @@ namespace КП.UI.Panels
         {
             PanelManager.SwitchTo<MyTickets>();
         }
+
+        private void showUsersBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<ShowUsers>();
+        }
     }
 }

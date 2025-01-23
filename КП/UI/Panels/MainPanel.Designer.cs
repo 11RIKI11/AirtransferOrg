@@ -87,6 +87,7 @@
             showUsersBtn.TabIndex = 6;
             showUsersBtn.Text = "Просмотреть пользователей";
             showUsersBtn.UseVisualStyleBackColor = true;
+            showUsersBtn.Click += showUsersBtn_Click;
             // 
             // swowMyAirlineBtn
             // 
