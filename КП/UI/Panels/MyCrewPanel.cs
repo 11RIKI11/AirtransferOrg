@@ -23,5 +23,19 @@ namespace КП.UI.Panels
 
             this.Controls.Add(mainMenu);
         }
+
+        private void MyCrewPanel_SizeChanged(object sender, EventArgs e)
+        {
+            myCrewListDataGrid.Location = new Point(this.Width / 2 - myCrewListDataGrid.Width / 2, this.Height / 2 - myCrewListDataGrid.Height / 2);
+            searchLabel.Location = new Point(myCrewListDataGrid.Location.X + myCrewListDataGrid.Width + 40, myCrewListDataGrid.Location.Y + searchLabel.Height);
+            searchTextBox.Location = new Point(searchLabel.Location.X, searchLabel.Location.Y + searchTextBox.Height);
+            resetFiltersBtn.Location = new Point(searchTextBox.Location.X, searchTextBox.Location.Y + resetFiltersBtn.Height);
+            sortLabel.Location = new Point(resetFiltersBtn.Location.X, resetFiltersBtn.Location.Y + resetFiltersBtn.Height + 10);
+            sortFieldLabel.Location = new Point(sortLabel.Location.X, sortLabel.Location.Y + sortLabel.Height);
+            sortFieldSelect.Location = new Point(sortFieldLabel.Location.X, sortFieldLabel.Location.Y + sortFieldLabel.Height);
+            sortAscBtn.Location = new Point(sortFieldSelect.Location.X, sortFieldSelect.Location.Y + sortFieldSelect.Height + 10);
+            sortDescBtn.Location = new Point(sortAscBtn.Location.X, sortAscBtn.Location.Y + sortAscBtn.Height + 10);
+            sortFieldSelect.SelectedIndex = 0;
+        }
     }
 }

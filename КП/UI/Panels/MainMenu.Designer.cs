@@ -49,6 +49,7 @@
             showMyCrewBtn.TabIndex = 45;
             showMyCrewBtn.Text = "Мой экипаж";
             showMyCrewBtn.UseVisualStyleBackColor = true;
+            showMyCrewBtn.Click += showMyCrewBtn_Click;
             // 
             // createFlightBtn
             // 

@@ -54,5 +54,10 @@ namespace КП.UI.Panels
             UserSession.Logout();
             PanelManager.SwitchTo<LoginPanel>();
         }
+
+        private void showMyCrewBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<MyCrewPanel>();
+        }
     }
 }
