@@ -24,14 +24,9 @@ namespace КП.UI.Panels
         {
             InitializeComponent();
 
-            var mainMenu = new MainMenu
-            {
-                Dock = DockStyle.Top
-            };
-
-            this.Controls.Add(mainMenu);
-
             ParentChanged += ShowStaff;
+            ParentChanged += CreateMainMenu;
+
             sortAscBtn.Click += (s, e) => { sortAsc = true; ShowStaff(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowStaff(null, EventArgs.Empty); };
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowStaff(null, EventArgs.Empty); };
@@ -39,11 +34,22 @@ namespace КП.UI.Panels
             resetFiltersBtn.Click += ClearFilter_Click;
         }
 
+        private void CreateMainMenu(object? sender, EventArgs e)
+        {
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
+            mainMenu.BringToFront();  // Выводим панель на передний план
+        }
+
         public async void ShowStaff(object sender, EventArgs e)
         {
             var staff = await GetStaff();
 
-            staffListDataGrid.Columns.Clear(); // Очистка старых столбцов
+            staffListDataGrid.Columns.Clear();
 
             staffListDataGrid.Columns.Add("FirstName", "Имя");
             staffListDataGrid.Columns.Add("LastName", "Фамилия");
@@ -52,7 +58,6 @@ namespace КП.UI.Panels
 
             staffListDataGrid.Rows.Clear();
 
-            int index = 1;
             foreach (var employee in staff)
             {
                 staffListDataGrid.Rows.Add(

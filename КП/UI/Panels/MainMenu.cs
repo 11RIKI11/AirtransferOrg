@@ -16,12 +16,12 @@ namespace КП.UI.Panels
         public MainMenu()
         {
             InitializeComponent();
-
             if (UserSession.Role != "crew_member")
             {
                 showMyCrewBtn.Hide();
             }
         }
+
         private void MainMenu_SizeChanged(object sender, EventArgs e)
         {
             this.Height = showMyCrewBtn.Location.Y + showMyCrewBtn.Height + 10;

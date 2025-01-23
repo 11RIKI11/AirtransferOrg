@@ -18,14 +18,10 @@ namespace КП.UI.Panels
         public FlightListPanel()
         {
             InitializeComponent();
-            var mainMenu = new MainMenu
-            {
-                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
-            };
-
-            this.Controls.Add(mainMenu);
-            mainMenu.BringToFront();  // Выводим панель на передний план
+            
             ParentChanged += ShowFlights;
+            ParentChanged += CreateMainMenu;
+
             sortAscBtn.Click += (s, e) => { sortAsc = true; ShowFlights(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowFlights(null, EventArgs.Empty); };
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowFlights(null, EventArgs.Empty); };
@@ -49,6 +45,17 @@ namespace КП.UI.Panels
                 showMyFlightsBtn.Click += (s, e) => { myFlights = true; ShowFlights(null, EventArgs.Empty); };
             }
 
+        }
+
+        private void CreateMainMenu(object? sender, EventArgs e)
+        {
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
+            mainMenu.BringToFront();  // Выводим панель на передний план
         }
 
         public async void ShowFlights(object sender, EventArgs e)

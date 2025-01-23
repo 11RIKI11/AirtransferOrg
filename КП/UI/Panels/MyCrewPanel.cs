@@ -6,33 +6,47 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
+using КП.Core;
 using КП.Core.Entities;
 using КП.Infrastructure;
 
 namespace КП.UI.Panels
 {
-    public partial class MyCrewPanel : UserControl
+    public partial class MyCrewPanel : UserControl, IPanelWithData
     {
         private int pageSize = 50;
         private int currentPage = 0;
         private bool sortAsc = true;
+        private long? crewId = UserSession.UserId;
 
         public MyCrewPanel()
         {
             InitializeComponent();
 
-            var mainMenu = new MainMenu
-            {
-                Dock = DockStyle.Top
-            };
-            this.Controls.Add(mainMenu);
-
             ParentChanged += ShowCrew;
+            ParentChanged += CreateMainMenu;
             sortAscBtn.Click += (s, e) => { sortAsc = true; ShowCrew(null, EventArgs.Empty); };
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowCrew(null, EventArgs.Empty); };
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowCrew(null, EventArgs.Empty); };
             sortFieldSelect.SelectedIndexChanged += (s, e) => { ShowCrew(null, EventArgs.Empty); };
             resetFiltersBtn.Click += ClearFilter_Click;
+            ControlRemoved += MyCrewPanel_ControlRemoved;
+        }
+
+        private void CreateMainMenu(object? sender, EventArgs e)
+        {
+            var mainMenu = new MainMenu
+            {
+                Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
+            };
+
+            this.Controls.Add(mainMenu);
+            mainMenu.BringToFront();  // Выводим панель на передний план
+        }
+
+        private void MyCrewPanel_ControlRemoved(object? sender, ControlEventArgs e)
+        {
+            crewId = UserSession.UserId;
         }
 
         public async void ShowCrew(object sender, EventArgs e)
@@ -48,7 +62,7 @@ namespace КП.UI.Panels
 
             foreach (var member in crew)
             {
-                myCrewListDataGrid.Rows.Add(member.IdNavigation.FirstName, member.IdNavigation.LastName, member.Qualification);
+                myCrewListDataGrid.Rows.Add(member.IdNavigation.FirstName, member.IdNavigation.LastName, member.Qualification ?? "Не имеет");
             }
         }
 
@@ -64,14 +78,24 @@ namespace КП.UI.Panels
         {
             var context = DbContextFactory.CreateContext();
 
-            var userCrewIds = context.CrewAssigments
-                .Where(ca => ca.CrewMemberId == UserSession.UserId)
-                .Select(ca => ca.CrewId);
-
             var query = context.CrewMembers
                 .Include(cm => cm.IdNavigation)
                 .Include(cm => cm.CrewAssigments)
-                .Where(cm => cm.CrewAssigments.Any(ca => userCrewIds.Contains(ca.CrewId)));
+                .AsQueryable();
+
+            if (crewId == UserSession.UserId && UserSession.Role == "crew_member")
+            {
+                var userCrewIds = context.CrewAssigments
+                    .Where(ca => ca.CrewMemberId == crewId)
+                    .Select(ca => ca.CrewId);
+
+                query = query
+                    .Where(cm => cm.CrewAssigments.Any(ca => userCrewIds.Contains(ca.CrewId)));
+            }
+            else
+            {
+                query = query.Where(cm => cm.CrewAssigments.Any(ca => ca.CrewId == crewId));
+            }
 
             var search = searchTextBox.Text.ToLower();
             if (!string.IsNullOrEmpty(search))
@@ -85,6 +109,7 @@ namespace КП.UI.Panels
             query = sortAsc ? query.OrderBy(OrderByIndex(sortIndex)) : query.OrderByDescending(OrderByIndex(sortIndex));
 
             query = query.Skip(pageSize * currentPage).Take(pageSize);
+
             return await query.ToListAsync();
         }
 
@@ -110,6 +135,11 @@ namespace КП.UI.Panels
             sortAscBtn.Location = new Point(sortFieldSelect.Location.X, sortFieldSelect.Location.Y + sortFieldSelect.Height + 10);
             sortDescBtn.Location = new Point(sortAscBtn.Location.X, sortAscBtn.Location.Y + sortAscBtn.Height + 10);
             sortFieldSelect.SelectedIndex = 0;
+        }
+
+        public void SetData(dynamic data)
+        {
+            crewId = data.crewId;
         }
     }
 }

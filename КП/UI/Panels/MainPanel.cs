@@ -16,6 +16,11 @@ namespace КП.UI.Panels
         public MainPanel()
         {
             InitializeComponent();
+            ParentChanged += MainPanel_ParentChanged;
+        }
+
+        private void MainPanel_ParentChanged(object? sender, EventArgs e)
+        {
             var mainMenu = new MainMenu
             {
                 Dock = DockStyle.Top  // Устанавливаем DockStyle.Top для фиксации в верхней части
@@ -24,6 +29,7 @@ namespace КП.UI.Panels
             this.Controls.Add(mainMenu);
             mainMenu.BringToFront();  // Выводим панель на передний план
         }
+
         private void MainPanel_SizeChanged(object sender, EventArgs e)
         {
             

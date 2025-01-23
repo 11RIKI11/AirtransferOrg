@@ -19,6 +19,7 @@
 
         public static void Logout()
         {
+            Application.Restart();
             UserId = null;
             Role = null;
         }
