@@ -68,6 +68,7 @@
             showStaffBtn.TabIndex = 43;
             showStaffBtn.Text = "Персонал";
             showStaffBtn.UseVisualStyleBackColor = true;
+            showStaffBtn.Click += showStaffBtn_Click;
             // 
             // showCrewBtn
             // 

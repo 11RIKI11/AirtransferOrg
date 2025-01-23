@@ -59,5 +59,10 @@ namespace КП.UI.Panels
         {
             PanelManager.SwitchTo<MyCrewPanel>();
         }
+
+        private void showStaffBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<ShowStaffPanel>();
+        }
     }
 }
