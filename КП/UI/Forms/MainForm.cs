@@ -30,6 +30,7 @@ namespace КП
             PanelManager.RegisterPanel(new ShowUsers());
             PanelManager.RegisterPanel(new MyCrewPanel());
             PanelManager.RegisterPanel(new ShowStaffPanel());
+            PanelManager.RegisterPanel(new ShowCrewsListPanel());
             PanelManager.SwitchTo<LoginPanel>();
 
 

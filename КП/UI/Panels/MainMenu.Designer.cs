@@ -78,6 +78,7 @@
             showCrewBtn.TabIndex = 42;
             showCrewBtn.Text = "Экипажи";
             showCrewBtn.UseVisualStyleBackColor = true;
+            showCrewBtn.Click += showCrewBtn_Click;
             // 
             // airlinesBtn
             // 
