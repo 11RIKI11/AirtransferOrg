@@ -40,7 +40,9 @@
             airlineLabel = new Label();
             addressLabel = new Label();
             aircraftListLabel = new Label();
+            airlineFlightsDataGrid = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)aircraftsListDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)airlineFlightsDataGrid).BeginInit();
             SuspendLayout();
             // 
             // resetFiltersBtn
@@ -107,9 +109,9 @@
             // aircraftsListDataGrid
             // 
             aircraftsListDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            aircraftsListDataGrid.Location = new Point(108, 19);
+            aircraftsListDataGrid.Location = new Point(116, 19);
             aircraftsListDataGrid.Name = "aircraftsListDataGrid";
-            aircraftsListDataGrid.Size = new Size(462, 380);
+            aircraftsListDataGrid.Size = new Size(338, 380);
             aircraftsListDataGrid.TabIndex = 60;
             // 
             // sortFieldSelect
@@ -152,11 +154,20 @@
             aircraftListLabel.TabIndex = 71;
             aircraftListLabel.Text = "Самолёты авиакомпании:";
             // 
+            // airlineFlightsDataGrid
+            // 
+            airlineFlightsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            airlineFlightsDataGrid.Location = new Point(460, 19);
+            airlineFlightsDataGrid.Name = "airlineFlightsDataGrid";
+            airlineFlightsDataGrid.Size = new Size(346, 380);
+            airlineFlightsDataGrid.TabIndex = 72;
+            // 
             // MyAirlinePanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
+            Controls.Add(airlineFlightsDataGrid);
             Controls.Add(aircraftListLabel);
             Controls.Add(addressLabel);
             Controls.Add(airlineLabel);
@@ -173,6 +184,7 @@
             Size = new Size(897, 527);
             SizeChanged += MyAirlinePanel_SizeChanged;
             ((System.ComponentModel.ISupportInitialize)aircraftsListDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)airlineFlightsDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,5 +203,6 @@
         private Label airlineLabel;
         private Label addressLabel;
         private Label aircraftListLabel;
+        private DataGridView airlineFlightsDataGrid;
     }
 }
