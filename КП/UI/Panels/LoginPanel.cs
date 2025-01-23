@@ -126,10 +126,6 @@ public partial class LoginPanel : UserControl
         string email = emailTextBox.Text;
         string password = passwordTextBox.Text;
 
-
-        email = "aa@aa.aa";
-        password = "Qq1234";
-
         string validationMessage = ValidateLoginFields(email, password);
         if (!string.IsNullOrEmpty(validationMessage))
         {
