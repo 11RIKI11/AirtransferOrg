@@ -1,4 +1,5 @@
-﻿namespace КП.UI.Panels
+﻿
+namespace КП.UI.Panels
 {
     partial class MainPanel
     {
@@ -173,9 +174,11 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainPanel";
             Size = new Size(766, 490);
-            SizeChanged += MainUserPanel_SizeChanged;
+            SizeChanged += MainPanel_SizeChanged;
             ResumeLayout(false);
         }
+
+        
 
         #endregion
 
