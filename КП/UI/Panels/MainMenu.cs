@@ -16,6 +16,11 @@ namespace КП.UI.Panels
         public MainMenu()
         {
             InitializeComponent();
+
+            if (UserSession.Role != "crew_member")
+            {
+                showMyCrewBtn.Hide();
+            }
         }
         private void MainMenu_SizeChanged(object sender, EventArgs e)
         {
@@ -63,6 +68,11 @@ namespace КП.UI.Panels
         private void showStaffBtn_Click(object sender, EventArgs e)
         {
             PanelManager.SwitchTo<ShowStaffPanel>();
+        }
+
+        private void showCrewBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<ShowCrewsListPanel>();
         }
     }
 }
