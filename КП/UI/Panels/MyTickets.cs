@@ -77,6 +77,8 @@ namespace КП.UI.Panels
 
             var query = context.Tickets
                 .Include(t => t.Flight)
+                .Include(t => t.Flight.DepartureAirport)
+                .Include(t => t.Flight.ArrivalAirport)
                 .Include(t => t.Booking)
                 .Include(t => t.Booking.Passenger)
                 .Include(t => t.Booking.Passenger.DocumentType)
@@ -109,11 +111,10 @@ namespace КП.UI.Panels
         {
             return index switch
             {
-                1 => t => t.SeatNumber,
-                2 => t => t.Flight.Id,
-                3 => t => t.Booking.Passenger.FirstName,
-                4 => t => t.Booking.Passenger.LastName,
-                5 => t => t.Booking.Status,
+                1 => t => t.Flight.ArrivalTime,
+                2 => t => t.Status.Name,
+                3 => t => t.Flight.DepartureAirport.Name,
+                4 => t => t.Flight.ArrivalAirport.Name,
                 _ => t => t.Flight.DepartureTime,
             };
         }
