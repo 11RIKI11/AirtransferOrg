@@ -153,7 +153,7 @@
             myBookingInfoBtn.TabIndex = 13;
             myBookingInfoBtn.Text = "Мои билеты";
             myBookingInfoBtn.UseVisualStyleBackColor = true;
-            myBookingInfoBtn.Click += myBookingInfoBtn_Click;
+          
             // 
             // flightListDataGrid
             // 

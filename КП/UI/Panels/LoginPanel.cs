@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
@@ -126,8 +126,9 @@ public partial class LoginPanel : UserControl
         string email = emailTextBox.Text;
         string password = passwordTextBox.Text;
 
-        email = "makaka@jon.ru";
-        password = "1234Bb";
+
+        email = "user322@example.com";
+        password = "Aa1234";
 
         string validationMessage = ValidateLoginFields(email, password);
         if (!string.IsNullOrEmpty(validationMessage))

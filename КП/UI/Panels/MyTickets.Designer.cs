@@ -142,7 +142,6 @@
             flightTimetableBtn.TabIndex = 14;
             flightTimetableBtn.Text = "Расписание рейсов";
             flightTimetableBtn.UseVisualStyleBackColor = true;
-            flightTimetableBtn.Click += flightTimetableBtn_Click;
             // 
             // myBookingInfoBtn
             // 

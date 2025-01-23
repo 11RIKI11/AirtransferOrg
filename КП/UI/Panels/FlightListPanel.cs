@@ -1,15 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NodaTime;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using КП.Core.Entities;
 using КП.Infrastructure;
 
@@ -21,6 +13,7 @@ namespace КП.UI.Panels
         private int currentPage = 0;
         private bool sortAsc = true;
         private bool myFlights = false;
+        private LocalDate selectedDepartureDate = LocalDate.FromDateTime(DateTime.Now);
 
         public FlightListPanel()
         {
@@ -30,6 +23,11 @@ namespace КП.UI.Panels
             sortDescBtn.Click += (s, e) => { sortAsc = false; ShowFlights(null, EventArgs.Empty); };
             searchTextBox.TextChanged += (s, e) => { currentPage = 0; ShowFlights(null, EventArgs.Empty); };
             sortFieldSelect.SelectedIndexChanged += (s, e) => { ShowFlights(null, EventArgs.Empty); };
+            departureDateSelectCalendar.DateChanged += (s, e) => {
+                selectedDepartureDate = LocalDate.FromDateTime(departureDateSelectCalendar.SelectionStart);
+                ShowFlights(null, EventArgs.Empty);
+            };
+            resetFiltersBtn.Click += ClearFilter_Click;
 
 
             showAllFlights.Hide();
@@ -94,6 +92,17 @@ namespace КП.UI.Panels
             flightListDataGrid.CellContentClick += FlightListDataGrid_CellContentClick;
         }
 
+        private void ClearFilter_Click(object sender, EventArgs e)
+        {
+            sortAsc = true;
+            myFlights = false;
+            currentPage = 0;
+            searchTextBox.Text = string.Empty;
+            sortFieldSelect.SelectedIndex = 0;
+            selectedDepartureDate = LocalDate.FromDateTime(DateTime.Now);
+            departureDateSelectCalendar.SelectionStart = DateTime.Now;
+        }
+
         private void FlightListDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == flightListDataGrid.Columns["Details"].Index && e.RowIndex >= 0)
@@ -107,7 +116,6 @@ namespace КП.UI.Panels
         {
             var context = DbContextFactory.CreateContext();
 
-            var nowDate = LocalDateTime.FromDateTime(DateTime.Now);
             var query = context.Flights
                 .Include(f => f.Airline)
                 .Include(f => f.DepartureAirport)
@@ -115,7 +123,7 @@ namespace КП.UI.Panels
                 .Include(f => f.Aircraft)
                 .ThenInclude(a => a.Model)
                 .Include(f => f.Status)
-                .Where(f => f.DepartureTime >= nowDate);
+                .Where(f => f.DepartureTime.Date == selectedDepartureDate);
 
             if (myFlights)
             {
@@ -131,13 +139,6 @@ namespace КП.UI.Panels
                 || f.ArrivalAirport.Name.ToLower().StartsWith(search)
                 || f.Aircraft.RegistationNumber.ToString().StartsWith(search)
                 || f.Airline.Name.ToLower().StartsWith(search));
-            }
-
-            DateTime? departureDate = DateTime.Now;
-            if (departureDate.HasValue && departureDate != DateTime.Now)
-            {
-                var departureLocalDate = LocalDateTime.FromDateTime(DateTime.Now);
-                query = query.Where(f => f.DepartureTime >= departureLocalDate);
             }
 
             int sortIndex = sortFieldSelect.SelectedIndex;
@@ -194,11 +195,6 @@ namespace КП.UI.Panels
             sortFieldSelect.SelectedIndex = 0;
             departureDateselectLabel.Location = new Point(searchLabel.Location.X + searchTextBox.Width + 10, searchLabel.Location.Y);
             departureDateSelectCalendar.Location = new Point(searchTextBox.Location.X + searchTextBox.Width + 10, searchTextBox.Location.Y);
-        }
-
-        private void myBookingInfoBtn_Click(object sender, EventArgs e)
-        {
-            PanelManager.SwitchTo<MyTickets>();
         }
     }
 }
