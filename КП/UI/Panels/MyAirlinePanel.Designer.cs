@@ -41,6 +41,15 @@
             addressLabel = new Label();
             aircraftListLabel = new Label();
             airlineFlightsDataGrid = new DataGridView();
+            flightsResetFiltersBtn = new Button();
+            flightSortAscBtn = new Button();
+            flightSortFieldLabel = new Label();
+            sortFlightLabel = new Label();
+            flightsSortDesc = new Button();
+            sortFlightsComboBox = new ComboBox();
+            searchFlightTextBox = new TextBox();
+            searchFlightsLabel = new Label();
+            airlineFlightsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)aircraftsListDataGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)airlineFlightsDataGrid).BeginInit();
             SuspendLayout();
@@ -157,16 +166,106 @@
             // airlineFlightsDataGrid
             // 
             airlineFlightsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            airlineFlightsDataGrid.Location = new Point(264, 81);
+            airlineFlightsDataGrid.Location = new Point(207, 272);
             airlineFlightsDataGrid.Name = "airlineFlightsDataGrid";
-            airlineFlightsDataGrid.Size = new Size(546, 266);
+            airlineFlightsDataGrid.Size = new Size(546, 296);
             airlineFlightsDataGrid.TabIndex = 72;
+            // 
+            // flightsResetFiltersBtn
+            // 
+            flightsResetFiltersBtn.Location = new Point(367, 141);
+            flightsResetFiltersBtn.Name = "flightsResetFiltersBtn";
+            flightsResetFiltersBtn.Size = new Size(136, 41);
+            flightsResetFiltersBtn.TabIndex = 80;
+            flightsResetFiltersBtn.Text = "Сбросить фильтры";
+            flightsResetFiltersBtn.UseVisualStyleBackColor = true;
+            // 
+            // flightSortAscBtn
+            // 
+            flightSortAscBtn.Location = new Point(49, 69);
+            flightSortAscBtn.Name = "flightSortAscBtn";
+            flightSortAscBtn.Size = new Size(136, 41);
+            flightSortAscBtn.TabIndex = 79;
+            flightSortAscBtn.Text = "По возрастанию";
+            flightSortAscBtn.UseVisualStyleBackColor = true;
+            // 
+            // flightSortFieldLabel
+            // 
+            flightSortFieldLabel.AutoSize = true;
+            flightSortFieldLabel.Location = new Point(270, 183);
+            flightSortFieldLabel.Name = "flightSortFieldLabel";
+            flightSortFieldLabel.Size = new Size(98, 15);
+            flightSortFieldLabel.TabIndex = 78;
+            flightSortFieldLabel.Text = "Сортировать по:";
+            // 
+            // sortFlightLabel
+            // 
+            sortFlightLabel.AutoSize = true;
+            sortFlightLabel.Location = new Point(293, 97);
+            sortFlightLabel.Name = "sortFlightLabel";
+            sortFlightLabel.Size = new Size(76, 15);
+            sortFlightLabel.TabIndex = 77;
+            sortFlightLabel.Text = "Сортировка:";
+            // 
+            // flightsSortDesc
+            // 
+            flightsSortDesc.Location = new Point(109, 114);
+            flightsSortDesc.Name = "flightsSortDesc";
+            flightsSortDesc.Size = new Size(136, 41);
+            flightsSortDesc.TabIndex = 76;
+            flightsSortDesc.Text = "По убыванию";
+            flightsSortDesc.UseVisualStyleBackColor = true;
+            // 
+            // sortFlightsComboBox
+            // 
+            sortFlightsComboBox.AutoCompleteCustomSource.AddRange(new string[] { "Названию модели", "Вместимости сомолёта" });
+            sortFlightsComboBox.FormattingEnabled = true;
+            sortFlightsComboBox.Items.AddRange(new object[] { "Время отправления", "Время прибытия", "Статус", "Аэропрт отправления", "Аэропорт прибытия" });
+            sortFlightsComboBox.Location = new Point(140, 44);
+            sortFlightsComboBox.Name = "sortFlightsComboBox";
+            sortFlightsComboBox.Size = new Size(136, 23);
+            sortFlightsComboBox.TabIndex = 75;
+            // 
+            // searchFlightTextBox
+            // 
+            searchFlightTextBox.Location = new Point(360, 42);
+            searchFlightTextBox.Name = "searchFlightTextBox";
+            searchFlightTextBox.Size = new Size(136, 23);
+            searchFlightTextBox.TabIndex = 74;
+            // 
+            // searchFlightsLabel
+            // 
+            searchFlightsLabel.AutoSize = true;
+            searchFlightsLabel.Location = new Point(360, 19);
+            searchFlightsLabel.Name = "searchFlightsLabel";
+            searchFlightsLabel.Size = new Size(48, 15);
+            searchFlightsLabel.TabIndex = 73;
+            searchFlightsLabel.Text = "Искать:";
+            // 
+            // airlineFlightsLabel
+            // 
+            airlineFlightsLabel.AutoSize = true;
+            airlineFlightsLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            airlineFlightsLabel.Location = new Point(287, 247);
+            airlineFlightsLabel.Name = "airlineFlightsLabel";
+            airlineFlightsLabel.Size = new Size(277, 32);
+            airlineFlightsLabel.TabIndex = 81;
+            airlineFlightsLabel.Text = "Рейсы авиакомпании:";
             // 
             // MyAirlinePanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SkyBlue;
+            Controls.Add(airlineFlightsLabel);
+            Controls.Add(flightsResetFiltersBtn);
+            Controls.Add(flightSortAscBtn);
+            Controls.Add(flightSortFieldLabel);
+            Controls.Add(sortFlightLabel);
+            Controls.Add(flightsSortDesc);
+            Controls.Add(sortFlightsComboBox);
+            Controls.Add(searchFlightTextBox);
+            Controls.Add(searchFlightsLabel);
             Controls.Add(airlineFlightsDataGrid);
             Controls.Add(aircraftListLabel);
             Controls.Add(addressLabel);
@@ -204,5 +303,14 @@
         private Label addressLabel;
         private Label aircraftListLabel;
         private DataGridView airlineFlightsDataGrid;
+        private Button flightsResetFiltersBtn;
+        private Button flightSortAscBtn;
+        private Label flightSortFieldLabel;
+        private Label sortFlightLabel;
+        private Button flightsSortDesc;
+        private ComboBox sortFlightsComboBox;
+        private TextBox searchFlightTextBox;
+        private Label searchFlightsLabel;
+        private Label airlineFlightsLabel;
     }
 }

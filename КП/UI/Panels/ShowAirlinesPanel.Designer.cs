@@ -88,7 +88,7 @@
             // sortFieldSelect
             // 
             sortFieldSelect.FormattingEnabled = true;
-            sortFieldSelect.Items.AddRange(new object[] { "Название", "Страна", "Город", "Количество самолётов во флоте" });
+            sortFieldSelect.Items.AddRange(new object[] { "Название", "Страна", "Город", "ОГРН" });
             sortFieldSelect.Location = new Point(247, 148);
             sortFieldSelect.Name = "sortFieldSelect";
             sortFieldSelect.Size = new Size(136, 23);
