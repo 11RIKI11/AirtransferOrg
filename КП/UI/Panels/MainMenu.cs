@@ -87,7 +87,7 @@ namespace КП.UI.Panels
 
         private void swowMyAirlineBtn_Click(object sender, EventArgs e)
         {
-
+               PanelManager.SwitchTo<MyAirlinePanel>();
         }
 
         private void profileBtn_Click(object sender, EventArgs e)
