@@ -59,6 +59,7 @@
             createFlightBtn.TabIndex = 44;
             createFlightBtn.Text = "Создать рейс";
             createFlightBtn.UseVisualStyleBackColor = true;
+            createFlightBtn.Click += createFlightBtn_Click;
             // 
             // showStaffBtn
             // 
@@ -88,6 +89,7 @@
             airlinesBtn.TabIndex = 41;
             airlinesBtn.Text = "Авиакомпании";
             airlinesBtn.UseVisualStyleBackColor = true;
+            airlinesBtn.Click += airlinesBtn_Click;
             // 
             // swowMyAirlineBtn
             // 
@@ -97,6 +99,7 @@
             swowMyAirlineBtn.TabIndex = 40;
             swowMyAirlineBtn.Text = "Моя авиакомпания";
             swowMyAirlineBtn.UseVisualStyleBackColor = true;
+            swowMyAirlineBtn.Click += swowMyAirlineBtn_Click;
             // 
             // showUsersBtn
             // 
@@ -116,6 +119,7 @@
             profileBtn.TabIndex = 38;
             profileBtn.Text = "Профиль";
             profileBtn.UseVisualStyleBackColor = true;
+            profileBtn.Click += profileBtn_Click;
             // 
             // logoutBtn
             // 

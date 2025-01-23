@@ -74,5 +74,25 @@ namespace КП.UI.Panels
         {
             PanelManager.SwitchTo<ShowCrewsListPanel>();
         }
+
+        private void airlinesBtn_Click(object sender, EventArgs e)
+        {
+            PanelManager.SwitchTo<ShowAirlinesPanel>();
+        }
+
+        private void createFlightBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void swowMyAirlineBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void profileBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
